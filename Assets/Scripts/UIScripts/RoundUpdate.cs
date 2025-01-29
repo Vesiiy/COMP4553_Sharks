@@ -5,9 +5,11 @@ public class RoundUpdate: MonoBehaviour
 {
     // References
     public GameOverlay gameOverlay;
+
+    // Private variables
     private int roundNum;
 
-    private void Awake()
+    private void Start()
     {
         NextRound();
     }
