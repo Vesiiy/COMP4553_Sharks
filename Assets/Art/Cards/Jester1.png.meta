@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 748a5e18656d9474e8a8ba067dbd6c12
+guid: 478abde59e9d459409798b148508b610
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5388774874332693820
-    second: Jester2_0
+      213: -6070940038442621617
+    second: Jester1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,7 +139,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jester2_0
+      name: Jester1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4ca79d08dc93735b0800000000000000
-      internalID: -5388774874332693820
+      spriteID: f456ee34330bfbba0800000000000000
+      internalID: -6070940038442621617
       vertices: []
       indices: 
       edges: []
@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Jester1_0: -6070940038442621617
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
