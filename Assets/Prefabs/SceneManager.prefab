@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76fbb7f146c1333428e15c1c0ef299fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textMeshPro: {fileID: 0}
+  tmpObject: {fileID: 0}
 --- !u!114 &1883254046391254316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,4 +71,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4c6f3d14564bd40ae7980b1bf5f112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverlay: {fileID: 0}
+  gameOverlay: {fileID: 3510808996527138499}
