@@ -1,42 +1,64 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RoundUpdate: MonoBehaviour
 {
     // References
-    public GameOverlay gameOverlay;
-    public TMP_InputField betInput;
+    public GameOverlay gameOverlayScript;
+    public TMP_InputField playerBetInput;
+    public Button submitBetButton;
+    public GameObject[] betObjects;
 
     // Private variables
     private int roundNum;
     private int playerBet;
+    private bool isPaused;
 
     private void Start()
     {
+        ObjectActive(betObjects);
         NextRound();
     }
 
-    // Update round number 
+    // Call all functions needed to start a new round
     public void NextRound()
     {
         roundNum++;
-        gameOverlay.UpdateRound(roundNum);
-        GetPlayerBet();
+        gameOverlayScript.UpdateRound(roundNum);
+        StartCoroutine(GetPlayerBet());
     }
 
-    // Get player bet 
-    public void GetPlayerBet()
+    // Toggles
+    public void Paused() { isPaused = !isPaused; }
+    public void ObjectActive(GameObject[] objArray)
     {
-        if (int.TryParse(betInput.text, out playerBet))
+        foreach (GameObject obj in objArray)
         {
-            gameOverlay.UpdateBet(playerBet);
-            // This checks ASAP - need to wait for user to press button
+            obj.SetActive(!obj.activeSelf);
+        }
+    }
+
+    // Player bet coroutine 
+    IEnumerator GetPlayerBet()
+    {
+        ObjectActive(betObjects);
+        // Wait for isPaused to become true
+        yield return new WaitUntil(() => isPaused);
+        if (int.TryParse(playerBetInput.text, out playerBet))
+        {
+            // Update overlay 
+            gameOverlayScript.UpdateBet(playerBet);
+            ObjectActive(betObjects);
         }
         else
         {
             Debug.Log("Player entered wrong input type.");
-            // Happens if player inputs a non-int, this should eventually update whatever text prompt the player sees to indicate they entered wrong input 
-            return;
+            StartCoroutine(GetPlayerBet());
+            // Happens if player inputs a non-int, this should eventually update a text prompt to indicate they entered wrong input 
         }
+
+        Paused();
     }
 }
