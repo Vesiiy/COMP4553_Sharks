@@ -4,11 +4,17 @@ using TMPro;
 public class GameOverlay: MonoBehaviour
 {
     // References
-    public TextMeshProUGUI tmpObject;
+    public TextMeshProUGUI roundCounterTMP;
+    public TextMeshProUGUI playerBetTMP;
 
-    // Update TMP text 
-    public void UpdateText(int roundNum)
+    // Update round counter TMP
+    public void UpdateRound(int roundNum)
     {
-        tmpObject.text = "Round: " + roundNum;
+        roundCounterTMP.text = "Round: " + roundNum;
+    }
+    // Update player bet TMP
+    public void UpdateBet(int playerBet)
+    {
+        playerBetTMP.text = "Your bet: " + playerBet;
     }
 }
