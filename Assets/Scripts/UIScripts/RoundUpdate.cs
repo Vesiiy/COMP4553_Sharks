@@ -45,18 +45,24 @@ public class RoundUpdate: MonoBehaviour
     {
         ObjectActive(betObjects);
         // Wait for isPaused to become true
-        yield return new WaitUntil(() => isPaused);
-        if (int.TryParse(playerBetInput.text, out playerBet))
+
+        while (true)
         {
-            // Update overlay 
-            gameOverlayScript.UpdateBet(playerBet);
-            ObjectActive(betObjects);
-        }
-        else
-        {
-            Debug.Log("Player entered wrong input type.");
-            StartCoroutine(GetPlayerBet());
-            // Happens if player inputs a non-int, this should eventually update a text prompt to indicate they entered wrong input 
+            yield return new WaitUntil(() => isPaused);
+            if (int.TryParse(playerBetInput.text, out playerBet))
+            {
+                // Update overlay 
+                gameOverlayScript.UpdateBet(playerBet);
+                ObjectActive(betObjects);
+                break;
+            }
+            else
+            {
+                Debug.Log("Player entered wrong input type.");
+                yield return new WaitForSeconds(1f);
+                Paused();
+                // Happens if player inputs a non-int, this should eventually update a text prompt to indicate they entered wrong input 
+            }
         }
 
         Paused();
