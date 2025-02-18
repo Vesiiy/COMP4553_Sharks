@@ -8,14 +8,14 @@ public class RoundUpdate: MonoBehaviour
     // References
     public GameOverlay gameOverlayScript;
     public DeckBehaviour deckBehaviourScript;
+    public PlayerHand playerHandScript;
 
     public TMP_InputField playerBetInput;
     public Button submitBetButton;
     public GameObject[] betObjects;
 
     // Private variables
-    private int roundNum;
-    private int playerBet;
+    //private int playerBet;
     private bool isPaused;
 
     private void Start()
@@ -27,12 +27,13 @@ public class RoundUpdate: MonoBehaviour
     // Call all functions needed to start a new round
     public void NextRound()
     {
-        roundNum++;
-        gameOverlayScript.UpdateRound(roundNum);
+        Counters.roundNum++;
+        gameOverlayScript.UpdateRound();
         StartCoroutine(GetPlayerBet());
 
-        // PLAYERS MANUALLY SET TO 3 FOR TESTING --- CHANGE THIS LATER !!!
-        deckBehaviourScript.DealCards(roundNum, 3);
+        // CLEAR PLAYER HAND USED FOR TESTING -- REMOVE LATER !!!
+        playerHandScript.ClearPlayerHands();
+        deckBehaviourScript.DealCards();
     }
 
     // Toggles
@@ -54,10 +55,12 @@ public class RoundUpdate: MonoBehaviour
         while (true)
         {
             yield return new WaitUntil(() => isPaused);
-            if (int.TryParse(playerBetInput.text, out playerBet))
+            if (int.TryParse(playerBetInput.text, out Counters.playerBet))
             {
+                //Counters.playerBet = playerBet;
+
                 // Update overlay 
-                gameOverlayScript.UpdateBet(playerBet);
+                gameOverlayScript.UpdateBet();
                 ObjectActive(betObjects);
                 break;
             }

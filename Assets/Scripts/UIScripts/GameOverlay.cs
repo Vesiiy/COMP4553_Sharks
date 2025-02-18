@@ -8,13 +8,13 @@ public class GameOverlay: MonoBehaviour
     public TextMeshProUGUI playerBetTMP;
 
     // Update round counter TMP
-    public void UpdateRound(int roundNum)
+    public void UpdateRound()
     {
-        roundCounterTMP.text = "Round: " + roundNum;
+        roundCounterTMP.text = "Round: " + Counters.roundNum;
     }
     // Update player bet TMP
-    public void UpdateBet(int playerBet)
+    public void UpdateBet()
     {
-        playerBetTMP.text = "Your bet: " + playerBet;
+        playerBetTMP.text = "Your bet: " + Counters.playerBet;
     }
 }

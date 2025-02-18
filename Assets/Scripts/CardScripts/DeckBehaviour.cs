@@ -5,31 +5,30 @@ public class DeckBehaviour : MonoBehaviour
 {
     // References
     public Deck deckScript;
+    public PlayerHand playerHandScript;
 
-    public void DealCards(int roundNum, int playerNum)
+    public void DealCards()
     {
-        int cardsInPlay = roundNum * playerNum;
-        int playerId = playerNum; 
+        int cardsInPlay = Counters.roundNum * Counters.playerNum;
+        int playerId = 0; 
 
         // Shallow copy of deckScript.cards<>
         // NOTE: this only makes a copy of the list with references to the same objects.
         // Any changes made to the cards in this list will make changes to the objects themselves. 
         List<ScriptableObject> cards = new(deckScript.cards);
 
+        // Deals cards round robin style to each player and adds it to their hand 
         for (int i = 0; i < cardsInPlay; i++)
         {
-            int randomIndex = Random.Range(0, cards.Count -1);
-            Debug.Log(cards[randomIndex]);
+            int randomIndex = Random.Range(0, cards.Count - 1);
 
-            // playerCard.updatePlayerDeck(cards[randomIndex], playerId);
-            // playerId--;
-            // if (playerId = 0) { playerId = playerNum };
+            // Adds each card to the player's hand based on playerId
+            playerHandScript.UpdatePlayerHand(cards[randomIndex], playerId);
+            playerId++;
+            if (playerId == Counters.playerNum) { playerId = 0; }
 
-            // This will eventually send the delt card to the playerCards script and will add
-            // it to the corresponding players hand
-
+            // Removes the card from the deck
             cards.RemoveAt(randomIndex);
         }
-        Debug.Log(cards.Count);
     }
 }
