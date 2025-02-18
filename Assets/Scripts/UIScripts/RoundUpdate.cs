@@ -7,6 +7,8 @@ public class RoundUpdate: MonoBehaviour
 {
     // References
     public GameOverlay gameOverlayScript;
+    public DeckBehaviour deckBehaviourScript;
+
     public TMP_InputField playerBetInput;
     public Button submitBetButton;
     public GameObject[] betObjects;
@@ -28,6 +30,9 @@ public class RoundUpdate: MonoBehaviour
         roundNum++;
         gameOverlayScript.UpdateRound(roundNum);
         StartCoroutine(GetPlayerBet());
+
+        // PLAYERS MANUALLY SET TO 3 FOR TESTING --- CHANGE THIS LATER !!!
+        deckBehaviourScript.DealCards(roundNum, 3);
     }
 
     // Toggles
