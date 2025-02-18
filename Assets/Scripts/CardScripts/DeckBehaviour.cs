@@ -19,6 +19,7 @@ public class DeckBehaviour : MonoBehaviour
         for (int i = 0; i < cardsInPlay; i++)
         {
             int randomIndex = Random.Range(0, cards.Count -1);
+            Debug.Log(cards[randomIndex]);
 
             // playerCard.updatePlayerDeck(cards[randomIndex], playerId);
             // playerId--;
@@ -29,5 +30,6 @@ public class DeckBehaviour : MonoBehaviour
 
             cards.RemoveAt(randomIndex);
         }
+        Debug.Log(cards.Count);
     }
 }
