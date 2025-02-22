@@ -126,4 +126,4 @@ MonoBehaviour:
   cardSprite: {fileID: 6152354262860820741}
   playerCardAnimator: {fileID: 5509295772310746638}
   backOfCard: {fileID: 5000927251509650613, guid: 6a4f2cfae07757748b6f2d1cbf786a7f, type: 3}
-  frontOfCard: {fileID: -4398717326534089767, guid: 68769110c9484fe4e8840cb482dd6d36, type: 3}
+  frontOfCard: {fileID: 0}

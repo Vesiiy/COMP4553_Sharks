@@ -15,7 +15,6 @@ public class RoundUpdate: MonoBehaviour
     public GameObject[] betObjects;
 
     // Private variables
-    //private int playerBet;
     private bool isPaused;
 
     private void Start()
@@ -57,8 +56,6 @@ public class RoundUpdate: MonoBehaviour
             yield return new WaitUntil(() => isPaused);
             if (int.TryParse(playerBetInput.text, out Counters.playerBet))
             {
-                //Counters.playerBet = playerBet;
-
                 // Update overlay 
                 gameOverlayScript.UpdateBet();
                 ObjectActive(betObjects);

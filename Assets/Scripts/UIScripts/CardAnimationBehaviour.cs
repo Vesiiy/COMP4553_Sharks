@@ -22,15 +22,6 @@ public class CardAnimationBehaviour : MonoBehaviour
         cardSprite.sprite = frontOfCard;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // Animation for moving the cards to each hand.
+    // This would likely be called from PLayerHand when a card is added to the player's hand 
 }

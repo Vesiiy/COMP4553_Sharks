@@ -10,5 +10,5 @@ public class CardTemplate : ScriptableObject
     // References 
     public Suit cardSuit;
     public int cardWeight;
-    public Sprite cardImage;
+    public Sprite cardFront;
 }
