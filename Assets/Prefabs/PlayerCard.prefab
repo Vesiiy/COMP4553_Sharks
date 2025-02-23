@@ -143,7 +143,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHandScript: {fileID: 212845158905235679, guid: bc8842edc3939e046ab2c0b8074832bc, type: 3}
   roundScoreScript: {fileID: 3257259704751574766, guid: 28f04fd4eeba1f64582d7b950aad2d7c, type: 3}
-  cardSuit: 2
+  cardPrefab: {fileID: 7715708311805724111}
+  cardSuit: 3
   cardWeight: 10
   cardFront: {fileID: 0}
 --- !u!61 &7723342942698242490

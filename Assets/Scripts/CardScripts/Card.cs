@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Card : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class Card : MonoBehaviour
     // References 
     public PlayerHand playerHandScript;
     public RoundScore roundScoreScript;
+    public GameObject cardPrefab;
 
     public Suit cardSuit;
     public int cardWeight;
@@ -22,9 +24,14 @@ public class Card : MonoBehaviour
         this.card = card;
         this.playerId = playerId;
 
-        cardSuit = (Suit)card.GetType().GetField("cardSuit").GetValue(card);
-        cardWeight = (int)card.GetType().GetField("cardWeight").GetValue(card);
-        cardFront = (Sprite)card.GetType().GetField("cardFront").GetValue(card);
+        // Instantiate the card prefab 
+        GameObject cardObject = Instantiate(cardPrefab);
+        cardObject.transform.SetParent(GameObject.Find("PlayerHand_" + playerId).transform, false);
+
+        // Assign new values to the card prefab
+        cardObject.GetComponent<Card>().cardSuit = (Suit)card.GetType().GetField("cardSuit").GetValue(card);
+        cardObject.GetComponent<Card>().cardWeight = (int)card.GetType().GetField("cardWeight").GetValue(card);
+        cardObject.GetComponent<Card>().cardFront = (Sprite)card.GetType().GetField("cardFront").GetValue(card);
     }
 
     // Remove the card from the player's hand when clicked
@@ -33,7 +40,8 @@ public class Card : MonoBehaviour
     public void OnMouseDown()
     {
         roundScoreScript.AddCard(card, playerId);
-        playerHandScript.RemoveCard(card, playerId);
+        // playerHandScript.RemoveCard(card, playerId);
         Destroy(gameObject);
+        Debug.Log("check");
     }
 }

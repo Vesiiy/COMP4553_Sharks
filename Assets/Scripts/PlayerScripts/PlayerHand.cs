@@ -8,12 +8,10 @@ public class PlayerHand : MonoBehaviour
     // References 
     public Card cardScript;
 
-    public GameObject cardPrefab;
-
     // Private Variables 
     private readonly Dictionary<string, List<ScriptableObject>> playerHands = new();
 
-    private void Start()
+    private void Awake()
     {
         // Creates a new list for each player that will hold their cards
         for (int i = 0; i < Counters.playerNum; i++)
@@ -29,11 +27,22 @@ public class PlayerHand : MonoBehaviour
         string key = "PlayerHand_" + playerId;
         playerHands[key].Add(card);
 
-        // Instantiate the card prefab 
-        GameObject cardObject = Instantiate(cardPrefab);
-        cardObject.transform.SetParent(GameObject.Find(key).transform, false);
-
         cardScript.AttachCard(card, playerId);
+    }
+
+    // Check the contents of each hand -- used for testing
+    public void CheckHands()
+    {
+        foreach (var item in playerHands)
+        {
+            string key = item.Key;
+            List<ScriptableObject> objectList = item.Value;
+
+            foreach (var card in objectList)
+            {
+                Debug.Log("Key: " + key + " Card: " + card);
+            }
+        }
     }
 
     // Remove a card from the player's hand
@@ -43,7 +52,7 @@ public class PlayerHand : MonoBehaviour
         playerHands[key].Remove(card);
     }
 
-    // Clears all player hands -- used for testing, might not need ???
+    // Clears all player hands -- used for testing 
     public void ClearPlayerHands()
     {
         foreach (KeyValuePair<string, List<ScriptableObject>> playerHand in playerHands)

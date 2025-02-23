@@ -29,10 +29,10 @@ public class RoundUpdate: MonoBehaviour
         Counters.roundNum++;
         gameOverlayScript.UpdateRound();
         StartCoroutine(GetPlayerBet());
-
-        // CLEAR PLAYER HAND USED FOR TESTING -- REMOVE LATER !!!
-        playerHandScript.ClearPlayerHands();
         deckBehaviourScript.DealCards();
+
+        // Testing
+        playerHandScript.CheckHands();
     }
 
     // Toggles

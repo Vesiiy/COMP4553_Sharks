@@ -5,6 +5,7 @@ using UnityEngine;
 public class RoundScore : MonoBehaviour
 {
     // References
+    // Need to use list here - dictionary only takes 2 args 
     public List<List<Tuple<ScriptableObject, int, int>>> cardsPlayed;
 
     // Private Variables
