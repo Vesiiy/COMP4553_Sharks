@@ -21,11 +21,16 @@ public class RoundScore : MonoBehaviour
     // Compare the cards played to determine who won the trick 
     public void CalculateTrickWinner(Enum trickSuit, Enum roundSuit)
     {
-        playOrder = 0; 
+        //playOrder = 0; 
 
-        foreach (List<Tuple<ScriptableObject, int, int>> card in cardsPlayed)
-        {
-            // if card.suit == trickSuit || card.suit == roundSuit
-        }
+        //foreach (List<Tuple<ScriptableObject, int, int>> card in cardsPlayed)
+        //{
+        //    // If card suit matches the trick or round suit 
+        //    if (card.GetType().GetField("cardSuit").GetValue(card) == trickSuit || 
+        //        card.GetType().GetField("cardSuit").GetValue(card) == roundSuit)
+        //    {
+        //        //
+        //    }
+        //}
     }
 }

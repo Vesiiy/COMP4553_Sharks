@@ -19,8 +19,8 @@ public class Card : MonoBehaviour
     // Assign the values from the card scriptable object to the card prefab 
     public void AttachCard(ScriptableObject card, int playerId)
     {
-        card = this.card;
-        playerId = this.playerId;
+        this.card = card;
+        this.playerId = playerId;
 
         cardSuit = (Suit)card.GetType().GetField("cardSuit").GetValue(card);
         cardWeight = (int)card.GetType().GetField("cardWeight").GetValue(card);

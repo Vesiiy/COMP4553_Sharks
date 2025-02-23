@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3510808996527138499}
   - component: {fileID: 1883254046391254316}
   - component: {fileID: 8968064715508737177}
+  - component: {fileID: 363650030523842022}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -124,3 +125,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckScript: {fileID: 11400000, guid: a88dd005180bb414398c1cfbd1b12e9d, type: 2}
   playerHandScript: {fileID: 7693492194332247431}
+--- !u!114 &363650030523842022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6469577831583497317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 428aa80979629264380d99da764fbc23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
