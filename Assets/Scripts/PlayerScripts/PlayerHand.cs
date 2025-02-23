@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerHand : MonoBehaviour
 {
     // References 
+    public Card cardScript;
+
     public GameObject cardPrefab;
 
     // Private Variables 
@@ -18,11 +20,6 @@ public class PlayerHand : MonoBehaviour
         {
             string key = "PlayerHand_" + i;
             playerHands[key] = new List<ScriptableObject>();
-            Debug.Log(key + " has been created.");
-
-            // Creates a parent game object for each player's hand
-            GameObject cardParent = new();
-            cardParent.name = key;
         }
     }
 
@@ -32,13 +29,11 @@ public class PlayerHand : MonoBehaviour
         string key = "PlayerHand_" + playerId;
         playerHands[key].Add(card);
 
-        // Debug statements for testing -- remove later !!!
-        Debug.Log(key + " has " + playerHands[key].Count + " cards.");
-        Debug.Log(card);
-
         // Instantiate the card prefab 
         GameObject cardObject = Instantiate(cardPrefab);
-        cardObject.transform.SetParent(GameObject.Find(key).transform);
+        cardObject.transform.SetParent(GameObject.Find(key).transform, false);
+
+        cardScript.AttachCard(card);
     }
 
     // Remove a card from the player's hand
