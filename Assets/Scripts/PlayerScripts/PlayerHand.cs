@@ -33,7 +33,7 @@ public class PlayerHand : MonoBehaviour
         GameObject cardObject = Instantiate(cardPrefab);
         cardObject.transform.SetParent(GameObject.Find(key).transform, false);
 
-        cardScript.AttachCard(card);
+        cardScript.AttachCard(card, playerId);
     }
 
     // Remove a card from the player's hand
