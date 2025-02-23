@@ -141,9 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba516cea42c4933469103062614fbbbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHandScript: {fileID: 7693492194332247431, guid: cb37eab15b0d14741817b9d633f355e6, type: 3}
-  roundScoreScript: {fileID: 363650030523842022, guid: cb37eab15b0d14741817b9d633f355e6, type: 3}
-  cardSuit: 0
+  playerHandScript: {fileID: 212845158905235679, guid: bc8842edc3939e046ab2c0b8074832bc, type: 3}
+  roundScoreScript: {fileID: 3257259704751574766, guid: 28f04fd4eeba1f64582d7b950aad2d7c, type: 3}
+  cardSuit: 2
   cardWeight: 10
   cardFront: {fileID: 0}
 --- !u!61 &7723342942698242490
