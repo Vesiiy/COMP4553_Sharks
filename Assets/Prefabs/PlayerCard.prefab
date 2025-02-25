@@ -141,12 +141,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba516cea42c4933469103062614fbbbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHandScript: {fileID: 212845158905235679, guid: bc8842edc3939e046ab2c0b8074832bc, type: 3}
-  roundScoreScript: {fileID: 3257259704751574766, guid: 28f04fd4eeba1f64582d7b950aad2d7c, type: 3}
+  playerHandScript: {fileID: 0}
+  roundScoreScript: {fileID: 0}
   cardPrefab: {fileID: 7715708311805724111}
-  cardSuit: 3
-  cardWeight: 10
+  cardSuit: 0
+  cardWeight: 0
   cardFront: {fileID: 0}
+  card: {fileID: 11400000, guid: e2158298a017c274989b7e7023f8fa8a, type: 2}
+  playerId: 2
 --- !u!61 &7723342942698242490
 BoxCollider2D:
   m_ObjectHideFlags: 0

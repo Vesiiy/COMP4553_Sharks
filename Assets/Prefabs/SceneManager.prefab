@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4c6f3d14564bd40ae7980b1bf5f112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverlayScript: {fileID: 3510808996527138499}
+  gameOverlayScript: {fileID: 0}
   deckBehaviourScript: {fileID: 0}
   playerHandScript: {fileID: 0}
   playerBetInput: {fileID: 0}

@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class PlayerHand : MonoBehaviour

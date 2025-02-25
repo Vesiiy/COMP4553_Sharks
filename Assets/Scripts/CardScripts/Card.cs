@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Card : MonoBehaviour
 {
@@ -14,9 +13,8 @@ public class Card : MonoBehaviour
     public int cardWeight;
     public Sprite cardFront;
 
-    // Private Variables
-    private ScriptableObject card;
-    private int playerId;
+    public ScriptableObject card;
+    public int playerId;
 
     // Assign the values from the card scriptable object to the card prefab 
     public void AttachCard(ScriptableObject card, int playerId)
@@ -24,14 +22,26 @@ public class Card : MonoBehaviour
         this.card = card;
         this.playerId = playerId;
 
-        // Instantiate the card prefab 
+        // Instantiate a card clone
         GameObject cardObject = Instantiate(cardPrefab);
         cardObject.transform.SetParent(GameObject.Find("PlayerHand_" + playerId).transform, false);
 
-        // Assign new values to the card prefab
+        // Assign new values to the card clone
         cardObject.GetComponent<Card>().cardSuit = (Suit)card.GetType().GetField("cardSuit").GetValue(card);
         cardObject.GetComponent<Card>().cardWeight = (int)card.GetType().GetField("cardWeight").GetValue(card);
         cardObject.GetComponent<Card>().cardFront = (Sprite)card.GetType().GetField("cardFront").GetValue(card);
+
+        // Assign the running scripts to the card clone
+        cardObject.GetComponent<Card>().playerHandScript = GameObject.Find("CardManager").GetComponent<PlayerHand>();
+        cardObject.GetComponent<Card>().roundScoreScript = GameObject.Find("ScoreManager").GetComponent<RoundScore>();
+
+        // Disable collider on cards that do not belong to the player 
+        // NOTE: ENABLE THIS ONCE BOTS HAVE THE ABILITY TO PLAY CARDS
+        // ----------------------------------------------------------
+        //if (playerId != 0)
+        //{
+        //    cardObject.GetComponent<BoxCollider2D>().enabled = false;
+        //}
     }
 
     // Remove the card from the player's hand when clicked
@@ -40,8 +50,8 @@ public class Card : MonoBehaviour
     public void OnMouseDown()
     {
         roundScoreScript.AddCard(card, playerId);
-        // playerHandScript.RemoveCard(card, playerId);
+        playerHandScript.RemoveCard(card, playerId);
+        playerHandScript.CheckHands();
         Destroy(gameObject);
-        Debug.Log("check");
     }
 }
