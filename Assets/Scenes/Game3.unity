@@ -2307,6 +2307,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2896821746623440053, guid: bc8842edc3939e046ab2c0b8074832bc, type: 3}
+      propertyPath: playerHandUI
+      value: 
+      objectReference: {fileID: 923095748}
+    - target: {fileID: 2896821746623440053, guid: bc8842edc3939e046ab2c0b8074832bc, type: 3}
       propertyPath: playerHandScript
       value: 
       objectReference: {fileID: 2087871600609314061}
