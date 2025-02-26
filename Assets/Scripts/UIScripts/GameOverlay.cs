@@ -15,6 +15,6 @@ public class GameOverlay: MonoBehaviour
     // Update player bet TMP
     public void UpdateBet()
     {
-        playerBetTMP.text = "Your bet: " + Counters.playerBet;
+        playerBetTMP.text = "Your bet: " + Counters.playerBet[0];
     }
 }

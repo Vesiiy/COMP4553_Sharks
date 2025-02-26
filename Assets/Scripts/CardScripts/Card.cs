@@ -2,14 +2,12 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    public enum Suit { Club, Spade, Heart, Diamond };
-
     // References 
     public PlayerHand playerHandScript;
     public RoundScore roundScoreScript;
     public GameObject cardPrefab;
 
-    public Suit cardSuit;
+    public Counters.Suit cardSuit;
     public int cardWeight;
     public Sprite cardFront;
 
@@ -27,7 +25,7 @@ public class Card : MonoBehaviour
         cardObject.transform.SetParent(GameObject.Find("PlayerHand_" + playerId).transform, false);
 
         // Assign new values to the card clone
-        cardObject.GetComponent<Card>().cardSuit = (Suit)card.GetType().GetField("cardSuit").GetValue(card);
+        cardObject.GetComponent<Card>().cardSuit = (Counters.Suit)card.GetType().GetField("cardSuit").GetValue(card);
         cardObject.GetComponent<Card>().cardWeight = (int)card.GetType().GetField("cardWeight").GetValue(card);
         cardObject.GetComponent<Card>().cardFront = (Sprite)card.GetType().GetField("cardFront").GetValue(card);
 
@@ -51,7 +49,6 @@ public class Card : MonoBehaviour
     {
         roundScoreScript.AddCard(card, playerId);
         playerHandScript.RemoveCard(card, playerId);
-        playerHandScript.CheckHands();
         Destroy(gameObject);
     }
 }
