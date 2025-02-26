@@ -27,12 +27,20 @@ public class RoundUpdate: MonoBehaviour
     public void NextRound()
     {
         Counters.roundNum++;
+        NextTrumpSuit();
+        Counters.trickSetCheck = true;
+
         gameOverlayScript.UpdateRound();
         StartCoroutine(GetPlayerBet());
 
-        // CLEAR PLAYER HAND USED FOR TESTING -- REMOVE LATER !!!
-        playerHandScript.ClearPlayerHands();
         deckBehaviourScript.DealCards();
+    }
+
+    // Update the trump suit
+    public void NextTrumpSuit()
+    {
+        if (Counters.trumpSuit == Counters.Suit.None) { Counters.trumpSuit = Counters.Suit.Club; }
+        else { Counters.trumpSuit++; }
     }
 
     // Toggles
@@ -54,8 +62,10 @@ public class RoundUpdate: MonoBehaviour
         while (true)
         {
             yield return new WaitUntil(() => isPaused);
-            if (int.TryParse(playerBetInput.text, out Counters.playerBet))
+            if (int.TryParse(playerBetInput.text, out int playerBet))
             {
+                Counters.playerBet[0] = playerBet;
+
                 // Update overlay 
                 gameOverlayScript.UpdateBet();
                 ObjectActive(betObjects);

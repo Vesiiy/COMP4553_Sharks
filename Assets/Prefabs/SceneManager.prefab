@@ -11,10 +11,8 @@ GameObject:
   - component: {fileID: 1161825403466345331}
   - component: {fileID: 2090192748964739434}
   - component: {fileID: 1811720382879964438}
-  - component: {fileID: 7693492194332247431}
   - component: {fileID: 3510808996527138499}
   - component: {fileID: 1883254046391254316}
-  - component: {fileID: 8968064715508737177}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -62,20 +60,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NumberOfPlayers: 3
---- !u!114 &7693492194332247431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6469577831583497317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a024582adca01d44eae5b458a2f72f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardScript: {fileID: 5644908501204808909, guid: 2b9fe3e141c78eb4e9fade6267e94cec, type: 3}
-  cardPrefab: {fileID: 7715708311805724111, guid: 2b9fe3e141c78eb4e9fade6267e94cec, type: 3}
 --- !u!114 &3510808996527138499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,25 +86,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4c6f3d14564bd40ae7980b1bf5f112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverlayScript: {fileID: 3510808996527138499}
-  deckBehaviourScript: {fileID: 8968064715508737177}
-  playerHandScript: {fileID: 7693492194332247431}
+  gameOverlayScript: {fileID: 0}
+  deckBehaviourScript: {fileID: 0}
+  playerHandScript: {fileID: 0}
   playerBetInput: {fileID: 0}
   submitBetButton: {fileID: 0}
   betObjects:
   - {fileID: 0}
   - {fileID: 0}
---- !u!114 &8968064715508737177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6469577831583497317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fbbbfd6c4bf54d4c9902a82313a0ce7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deckScript: {fileID: 11400000, guid: a88dd005180bb414398c1cfbd1b12e9d, type: 2}
-  playerHandScript: {fileID: 7693492194332247431}
