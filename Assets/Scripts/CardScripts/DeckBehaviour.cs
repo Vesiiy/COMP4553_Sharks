@@ -6,6 +6,7 @@ public class DeckBehaviour : MonoBehaviour
     // References
     public Deck deckScript;
     public PlayerHand playerHandScript;
+    public PlayerHandUI playerHandUI; 
 
     public void DealCards()
     {
@@ -24,6 +25,7 @@ public class DeckBehaviour : MonoBehaviour
 
             // Adds each card to the player's hand based on playerId
             playerHandScript.UpdatePlayerHand(cards[randomIndex], playerId);
+            if (playerId == 0) {playerHandUI.UpdateCardSpacing(Counters.roundNum);}
             playerId++;
             if (playerId == Counters.playerNum) { playerId = 0; }
 
