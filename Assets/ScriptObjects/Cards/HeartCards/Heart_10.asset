@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSuit: 2
   cardWeight: 10
-  cardImage: {fileID: 0}
+  cardFront: {fileID: -7319874671723664736, guid: 7d09c0afe3cc9e24ea84a927f14f73bd, type: 3}

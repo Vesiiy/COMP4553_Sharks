@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5000927251509650613, guid: 6a4f2cfae07757748b6f2d1cbf786a7f, type: 3}
+  m_Sprite: {fileID: -8622259438476403829, guid: 871eb552324cf6842aa358be8b0a0f68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardSprite: {fileID: 6152354262860820741}
   playerCardAnimator: {fileID: 5509295772310746638}
-  backOfCard: {fileID: 5000927251509650613, guid: 6a4f2cfae07757748b6f2d1cbf786a7f, type: 3}
+  backOfCard: {fileID: -8622259438476403829, guid: 871eb552324cf6842aa358be8b0a0f68, type: 3}
   frontOfCard: {fileID: 0}
 --- !u!114 &5644908501204808909
 MonoBehaviour:
@@ -152,7 +152,7 @@ MonoBehaviour:
   cardSuit: 0
   cardWeight: 0
   cardFront: {fileID: 0}
-  card: {fileID: 11400000, guid: e2158298a017c274989b7e7023f8fa8a, type: 2}
+  card: {fileID: 11400000, guid: 62947b0c6955cce459629bb7c40ef976, type: 2}
   playerId: 2
 --- !u!61 &7723342942698242490
 BoxCollider2D:
