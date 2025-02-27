@@ -27,16 +27,19 @@ public class RoundUpdate: MonoBehaviour
     // Call all functions needed to start a new round
     public void NextRound()
     {
-        Counters.roundNum++;
-        Counters.bettingPhase = true;
-        NextTrumpSuit();
-        Counters.trickSetCheck = true;
+        if (Counters.cardsInPlay == 0)
+        {
+            Counters.roundNum++;
+            Counters.bettingPhase = true;
+            NextTrumpSuit();
+            Counters.trickSetCheck = true;
 
-        gameOverlayScript.UpdateRound();
-        turnManagerScript.UpdateRoundStarter();
+            gameOverlayScript.UpdateRound();
+            turnManagerScript.UpdateRoundStarter();
 
-        deckBehaviourScript.DealCards();
-        StartCoroutine(GetPlayerBet());
+            deckBehaviourScript.DealCards();
+            StartCoroutine(GetPlayerBet());
+        }
     }
 
     // Update the trump suit

@@ -6,6 +6,7 @@ public class TurnManager : MonoBehaviour
 {
     private RoundScore roundScoreScript;
     private PlayerHand playerHandScript;
+    public GameOverlay gameOverlayScript;
     private void Start() 
     {
         roundScoreScript = FindFirstObjectByType<RoundScore>();
@@ -64,6 +65,7 @@ public class TurnManager : MonoBehaviour
         int botBet = Random.Range(0, Counters.roundNum);
         Counters.playerBet[Counters.currentTurn] = botBet;
         Debug.Log("Player " + Counters.currentTurn + " Bet: " + botBet);
+        gameOverlayScript.UpdateBotBet(Counters.currentTurn, botBet);
         Counters.betsPlaced++;
         CheckBettingPhase();
     }
