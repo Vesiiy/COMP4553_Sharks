@@ -22,9 +22,14 @@ public class TurnManager : MonoBehaviour
 
     public void UpdateCurrentTurn()
     {
-        if (Counters.cardsInPlay != 0)
+        if (Counters.cardsInPlay != 0 && !Counters.trickOver)
         {
             Counters.currentTurn = (Counters.currentTurn + 1) % Counters.playerNum;
+            NextPlayerTurn();
+        }
+        else if (Counters.trickOver)
+        {
+            Counters.trickOver = false;
             NextPlayerTurn();
         }
     }

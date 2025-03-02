@@ -18,6 +18,7 @@ public class Counters : MonoBehaviour
     public static bool trickSetCheck;
 
     public static int currentTurn;
+    public static bool trickOver;
     public static int nextRoundStarter;
     public static List<int> playerBet = new();
     public static List<int> roundScores = new();
@@ -33,6 +34,7 @@ public class Counters : MonoBehaviour
         trumpSuit = Suit.Club;
         nextRoundStarter = 0;
         bettingPhase = true;
+        trickOver = false;
         betsPlaced = 0;
 
         for (int i = 0; i < playerNum; i++) { playerBet.Add(0); }

@@ -105,7 +105,9 @@ public class RoundScore : MonoBehaviour
         playerScores[held.Item2]++;
         Debug.Log("Player " + held.Item2 + " won the trick.");
         UpdateScores();
+        Counters.trickOver = true;
         Counters.currentTurn = held.Item2;
+        Debug.Log("current turn set to " + Counters.currentTurn);
     }
 
     public void ClearCardsPlayed() { cardsPlayed.Clear(); }
