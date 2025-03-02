@@ -48,6 +48,10 @@ public class PlayerHand : MonoBehaviour
     {
         string key = "PlayerHand_" + playerId;
         playerHands[key].Remove(card);
+        Counters.cardsInPlay--;
+        Debug.Log("Cards in play: " + Counters.cardsInPlay);
+
+
     }
 
     // Clears all player hands -- used for testing 

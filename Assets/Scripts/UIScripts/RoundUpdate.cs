@@ -9,6 +9,7 @@ public class RoundUpdate: MonoBehaviour
     public GameOverlay gameOverlayScript;
     public DeckBehaviour deckBehaviourScript;
     public PlayerHand playerHandScript;
+    public TurnManager turnManagerScript;
 
     public TMP_InputField playerBetInput;
     public Button submitBetButton;
@@ -26,14 +27,20 @@ public class RoundUpdate: MonoBehaviour
     // Call all functions needed to start a new round
     public void NextRound()
     {
-        Counters.roundNum++;
-        NextTrumpSuit();
-        Counters.trickSetCheck = true;
+        if (Counters.cardsInPlay == 0)
+        {
+            Counters.roundNum++;
+            Counters.bettingPhase = true;
+            NextTrumpSuit();
+            Counters.trickSetCheck = true;
 
-        gameOverlayScript.UpdateRound();
-        StartCoroutine(GetPlayerBet());
+            gameOverlayScript.UpdateRound();
+    
+            deckBehaviourScript.DealCards();
+            turnManagerScript.UpdateRoundStarter();
 
-        deckBehaviourScript.DealCards();
+            StartCoroutine(GetPlayerBet());
+        }
     }
 
     // Update the trump suit
@@ -62,13 +69,17 @@ public class RoundUpdate: MonoBehaviour
         while (true)
         {
             yield return new WaitUntil(() => isPaused);
-            if (int.TryParse(playerBetInput.text, out int playerBet))
+            if (int.TryParse(playerBetInput.text, out int playerBet) && Counters.currentTurn == 0)
             {
                 Counters.playerBet[0] = playerBet;
 
                 // Update overlay 
                 gameOverlayScript.UpdateBet();
                 ObjectActive(betObjects);
+                
+                Counters.betsPlaced++;
+                turnManagerScript.CheckBettingPhase();
+                turnManagerScript.UpdateCurrentTurn();
                 break;
             }
             else

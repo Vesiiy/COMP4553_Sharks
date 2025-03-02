@@ -10,7 +10,7 @@ public class DeckBehaviour : MonoBehaviour
 
     public void DealCards()
     {
-        int cardsInPlay = Counters.roundNum * Counters.playerNum;
+        Counters.cardsInPlay = Counters.roundNum * Counters.playerNum;
         int playerId = 0; 
 
         // Shallow copy of deckScript.cards<>
@@ -19,7 +19,7 @@ public class DeckBehaviour : MonoBehaviour
         List<ScriptableObject> cards = new(deckScript.cards);
 
         // Deals cards round robin style to each player and adds it to their hand 
-        for (int i = 0; i < cardsInPlay; i++)
+        for (int i = 0; i < Counters.cardsInPlay; i++)
         {
             int randomIndex = Random.Range(0, cards.Count - 1);
 

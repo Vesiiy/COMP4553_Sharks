@@ -5,6 +5,7 @@ public class Card : MonoBehaviour
     // References 
     public PlayerHand playerHandScript;
     public RoundScore roundScoreScript;
+    public TurnManager turnManagerScript;
     public GameObject cardPrefab;
 
     public Counters.Suit cardSuit;
@@ -36,10 +37,10 @@ public class Card : MonoBehaviour
         // Disable collider on cards that do not belong to the player 
         // NOTE: ENABLE THIS ONCE BOTS HAVE THE ABILITY TO PLAY CARDS
         // ----------------------------------------------------------
-        //if (playerId != 0)
-        //{
-        //    cardObject.GetComponent<BoxCollider2D>().enabled = false;
-        //}
+        if (playerId != 0)
+        {
+            cardObject.GetComponent<BoxCollider2D>().enabled = false;
+        }
     }
 
     // Remove the card from the player's hand when clicked
@@ -47,8 +48,14 @@ public class Card : MonoBehaviour
     // to move the card on screen and keep it displayed we will need to change this 
     public void OnMouseDown()
     {
-        roundScoreScript.AddCard(card, playerId);
-        playerHandScript.RemoveCard(card, playerId);
-        Destroy(gameObject);
+        //Restricts user from playing cards as per game rules
+        if (Counters.currentTurn == 0 && !Counters.bettingPhase) 
+        {
+            roundScoreScript.AddCard(card, playerId);
+            playerHandScript.RemoveCard(card, playerId);
+            Destroy(gameObject);
+
+            FindFirstObjectByType<TurnManager>().UpdateCurrentTurn();
+        }
     }
 }
