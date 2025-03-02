@@ -48,6 +48,7 @@ public class Card : MonoBehaviour
     // to move the card on screen and keep it displayed we will need to change this 
     public void OnMouseDown()
     {
+        //Restricts user from playing cards as per game rules
         if (Counters.currentTurn == 0 && !Counters.bettingPhase) 
         {
             roundScoreScript.AddCard(card, playerId);

@@ -13,6 +13,7 @@ public class TurnManager : MonoBehaviour
         playerHandScript = FindFirstObjectByType<PlayerHand>();
     }
 
+    //Players take turns starting each round
     public void UpdateRoundStarter()
     {
         Counters.currentTurn = Counters.nextRoundStarter;
@@ -22,11 +23,13 @@ public class TurnManager : MonoBehaviour
 
     public void UpdateCurrentTurn()
     {
+        //Increments current turn if trick and round are in progress
         if (Counters.cardsInPlay != 0 && !Counters.trickOver)
         {
             Counters.currentTurn = (Counters.currentTurn + 1) % Counters.playerNum;
             NextPlayerTurn();
         }
+        //Trick winner starts next trick
         else if (Counters.trickOver)
         {
             Counters.trickOver = false;
@@ -34,10 +37,12 @@ public class TurnManager : MonoBehaviour
         }
     }
 
+    //Progresses game to next user turn
     public void NextPlayerTurn() 
     {
         Debug.Log("Current turn: " + Counters.currentTurn);
 
+        //Bots turns
         if (Counters.currentTurn != 0) 
         {
             StartCoroutine(BotTurn());
@@ -46,17 +51,21 @@ public class TurnManager : MonoBehaviour
 
     public IEnumerator BotTurn()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f); //Delays bots reaction for increased immersion
+
+        //Bots either place bet or play card
         if (Counters.bettingPhase && Counters.cardsInPlay != 0) {BotPlaceBet();}
         else if (!Counters.bettingPhase) {BotPlayCard();}
+
         UpdateCurrentTurn();
     }
 
     public void BotPlayCard() 
     {
+        //Locates bots hand
         GameObject botHand = GameObject.Find("PlayerHand_" + Counters.currentTurn);
-        //Debug.Log(botHand);
 
+        //only plays card if any exist
         if (botHand.transform.childCount > 0)
         {
             GameObject cardToDestroy = botHand.transform.GetChild(0).gameObject;
