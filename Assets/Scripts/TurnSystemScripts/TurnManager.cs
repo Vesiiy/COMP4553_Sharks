@@ -22,8 +22,11 @@ public class TurnManager : MonoBehaviour
 
     public void UpdateCurrentTurn()
     {
-        Counters.currentTurn = (Counters.currentTurn + 1) % Counters.playerNum;
-        NextPlayerTurn();
+        if (Counters.cardsInPlay != 0)
+        {
+            Counters.currentTurn = (Counters.currentTurn + 1) % Counters.playerNum;
+            NextPlayerTurn();
+        }
     }
 
     public void NextPlayerTurn() 
@@ -39,7 +42,7 @@ public class TurnManager : MonoBehaviour
     public IEnumerator BotTurn()
     {
         yield return new WaitForSeconds(1f);
-        if (Counters.bettingPhase) {BotPlaceBet();}
+        if (Counters.bettingPhase && Counters.cardsInPlay != 0) {BotPlaceBet();}
         else if (!Counters.bettingPhase) {BotPlayCard();}
         UpdateCurrentTurn();
     }
@@ -54,18 +57,22 @@ public class TurnManager : MonoBehaviour
             GameObject cardToDestroy = botHand.transform.GetChild(0).gameObject;
             ScriptableObject cardToPlay = cardToDestroy.GetComponent<Card>().card;
 
-            roundScoreScript.AddCard(cardToPlay, Counters.currentTurn);
+            gameOverlayScript.UpdateBotCardCount(Counters.currentTurn);
             playerHandScript.RemoveCard(cardToPlay, Counters.currentTurn);
+            roundScoreScript.AddCard(cardToPlay, Counters.currentTurn);
             Destroy(cardToDestroy);
         }
+
     } 
 
     public void BotPlaceBet() 
     {
         int botBet = Random.Range(0, Counters.roundNum);
         Counters.playerBet[Counters.currentTurn] = botBet;
+
         Debug.Log("Player " + Counters.currentTurn + " Bet: " + botBet);
         gameOverlayScript.UpdateBotBet(Counters.currentTurn, botBet);
+        
         Counters.betsPlaced++;
         CheckBettingPhase();
     }

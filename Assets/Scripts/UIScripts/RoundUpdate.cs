@@ -35,9 +35,10 @@ public class RoundUpdate: MonoBehaviour
             Counters.trickSetCheck = true;
 
             gameOverlayScript.UpdateRound();
+    
+            deckBehaviourScript.DealCards();
             turnManagerScript.UpdateRoundStarter();
 
-            deckBehaviourScript.DealCards();
             StartCoroutine(GetPlayerBet());
         }
     }
@@ -68,7 +69,7 @@ public class RoundUpdate: MonoBehaviour
         while (true)
         {
             yield return new WaitUntil(() => isPaused);
-            if (int.TryParse(playerBetInput.text, out int playerBet))
+            if (int.TryParse(playerBetInput.text, out int playerBet) && Counters.currentTurn == 0)
             {
                 Counters.playerBet[0] = playerBet;
 

@@ -7,6 +7,7 @@ public class RoundScore : MonoBehaviour
     // References
     public PlayerHand playerHandScript;
     public RoundUpdate roundUpdateScript;
+    public GameOverlay gameOverlayScript;
 
     public List<Tuple<ScriptableObject, int, int>> cardsPlayed = new();
     public List<int> playerScores = new();
@@ -104,6 +105,7 @@ public class RoundScore : MonoBehaviour
         playerScores[held.Item2]++;
         Debug.Log("Player " + held.Item2 + " won the trick.");
         UpdateScores();
+        Counters.currentTurn = held.Item2;
     }
 
     public void ClearCardsPlayed() { cardsPlayed.Clear(); }
@@ -122,6 +124,15 @@ public class RoundScore : MonoBehaviour
 
             // Update round scores and reset player scores
             Counters.roundScores[i] += temp;
+
+            if (i > 0)
+            {
+                gameOverlayScript.UpdateBotScore(i, Counters.roundScores[i]);
+            }
+            else if (i == 0)
+            {
+                gameOverlayScript.UpdateScore(Counters.roundScores[i]);
+            }
             playerScores[i] = 0;
 
             Debug.Log("Player " + i + " scored " + temp + " points this round and has " + Counters.roundScores[i] + " points");
