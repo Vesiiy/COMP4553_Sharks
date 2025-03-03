@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -40,6 +41,8 @@ public class RoundScore : MonoBehaviour
         // Add card to the list of cards played
         cardsPlayed.Add(new Tuple<ScriptableObject, int, int>(card, playerId, playOrder));
         playOrder++;
+
+        UpdateCardPlayArea();
 
         // Calculate trick winner when all players have played a card
         if (playOrder == Counters.playerNum)
@@ -105,6 +108,7 @@ public class RoundScore : MonoBehaviour
         playerScores[held.Item2]++;
         Debug.Log("Player " + held.Item2 + " won the trick.");
         UpdateScores();
+        StartCoroutine(ClearCardPlayArea());
         Counters.trickOver = true;
         Counters.currentTurn = held.Item2;
     }
@@ -140,4 +144,24 @@ public class RoundScore : MonoBehaviour
         }
     }
 
+    public void UpdateCardPlayArea()
+    {
+        var lastPlayedCard = cardsPlayed[cardsPlayed.Count - 1];
+        ScriptableObject cardData = lastPlayedCard.Item1;
+
+        Sprite cardSprite = (Sprite)cardData.GetType().GetField("cardFront").GetValue(cardData);
+
+        GameObject cardPlayArea = GameObject.Find("CardPlayArea");
+
+        SpriteRenderer spriteRenderer = cardPlayArea.GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = cardSprite;
+    }
+
+    public IEnumerator ClearCardPlayArea()
+    {
+        yield return new WaitForSeconds(3f);
+        GameObject cardPlayArea = GameObject.Find("CardPlayArea");
+        SpriteRenderer spriteRenderer = cardPlayArea.GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = null;
+    }
 }
