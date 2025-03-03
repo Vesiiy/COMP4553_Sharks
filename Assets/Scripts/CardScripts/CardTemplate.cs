@@ -9,4 +9,5 @@ public class CardTemplate : ScriptableObject
     public Counters.Suit cardSuit;
     public int cardWeight;
     public Sprite cardFront;
+    public Sprite cardBack;
 }

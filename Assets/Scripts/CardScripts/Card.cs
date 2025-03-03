@@ -9,7 +9,8 @@ public class Card : MonoBehaviour
 
     public Counters.Suit cardSuit;
     public int cardWeight;
-    public Sprite cardFront;
+    public GameObject spriteFront;
+    public GameObject spriteBack;
 
     public ScriptableObject card;
     public int playerId;
@@ -21,25 +22,45 @@ public class Card : MonoBehaviour
         this.playerId = playerId;
 
         // Instantiate a card clone
+        Debug.Log("" + playerId);
+
         GameObject cardObject = Instantiate(cardPrefab);
         cardObject.transform.SetParent(GameObject.Find("PlayerHand_" + playerId).transform, false);
 
+        Debug.Log($"Dealing card to Player {playerId} - Card Object: {cardObject.name}");
+
+
         // Assign new values to the card clone
-        cardObject.GetComponent<Card>().cardSuit = (Counters.Suit)card.GetType().GetField("cardSuit").GetValue(card);
-        cardObject.GetComponent<Card>().cardWeight = (int)card.GetType().GetField("cardWeight").GetValue(card);
-        cardObject.GetComponent<Card>().cardFront = (Sprite)card.GetType().GetField("cardFront").GetValue(card);
+        Card cardComponent = cardObject.GetComponent<Card>();
+        cardComponent.cardSuit = (Counters.Suit)card.GetType().GetField("cardSuit").GetValue(card);
+        cardComponent.cardWeight = (int)card.GetType().GetField("cardWeight").GetValue(card);
+
+        cardComponent.spriteFront = cardObject.transform.Find("CardFront").gameObject;
+        cardComponent.spriteBack = cardObject.transform.Find("CardBack").gameObject;
+
+        SpriteRenderer frontRenderer = cardComponent.spriteFront.GetComponent<SpriteRenderer>();
+        SpriteRenderer backRenderer = cardComponent.spriteBack.GetComponent<SpriteRenderer>();
 
         // Assign the running scripts to the card clone
         cardObject.GetComponent<Card>().playerHandScript = GameObject.Find("CardManager").GetComponent<PlayerHand>();
         cardObject.GetComponent<Card>().roundScoreScript = GameObject.Find("ScoreManager").GetComponent<RoundScore>();
 
+        frontRenderer.sprite = (Sprite)card.GetType().GetField("cardFront").GetValue(card);
+
         // Disable collider on cards that do not belong to the player 
         // NOTE: ENABLE THIS ONCE BOTS HAVE THE ABILITY TO PLAY CARDS
         // ----------------------------------------------------------
-        //if (playerId != 0)
-        //{
-        //    cardObject.GetComponent<BoxCollider2D>().enabled = false;
-        //}
+        if (playerId > 0)
+        {
+            cardObject.GetComponent<BoxCollider2D>().enabled = false;
+            cardComponent.spriteFront.SetActive(false);
+            cardComponent.spriteBack.SetActive(true);
+        }   
+        else if (playerId == 0)
+        {
+            cardComponent.spriteFront.SetActive(true);
+            cardComponent.spriteBack.SetActive(false);
+        }
     }
 
     // Remove the card from the player's hand when clicked
