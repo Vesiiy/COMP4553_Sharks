@@ -10,6 +10,7 @@ public class GameOverlay: MonoBehaviour
     public TextMeshProUGUI roundCounterTMP;
     public TextMeshProUGUI playerBetTMP;
     public TextMeshProUGUI playerScoreTMP;
+    public TextMeshProUGUI trumpSuitTMP;
     public GameObject playerUI;
     private int[] cardCounts;
 
@@ -27,6 +28,12 @@ public class GameOverlay: MonoBehaviour
             UpdateBotCardCount(i);
         }
     }
+
+    public void UpdateTrumpSuit()
+    {
+        trumpSuitTMP.text = "Trump: " + Counters.trumpSuit;
+    }
+
     // Update player bet TMP
     public void UpdateBet()
     {
