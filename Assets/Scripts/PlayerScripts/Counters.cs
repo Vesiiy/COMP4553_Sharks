@@ -33,6 +33,7 @@ public class Counters : MonoBehaviour
         roundNum = 0;
         trumpSuit = Suit.None;
         nextRoundStarter = 0;
+        trickSetCheck = true;
         bettingPhase = true;
         trickOver = false;
         betsPlaced = 0;

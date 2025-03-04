@@ -31,20 +31,22 @@ public class PlayerHand : MonoBehaviour
     // Check the contents of each hand -- used for testing
     public bool CanPlayCard(Card clickedCard, int playerId)
     {
-        Debug.Log("Trick Suit: " + Counters.trickSuit);
-
         string key = "PlayerHand_" + playerId;
         bool hasTrickSuit = false;
 
-        foreach (var card in playerHands[key])
+        if (!Counters.trickSetCheck)
         {
-            CardTemplate cardData = (CardTemplate)card;
-            if (cardData.cardSuit == Counters.trickSuit)
+            foreach (var card in playerHands[key])
             {
-                hasTrickSuit = true;
-                break;
+                CardTemplate cardData = (CardTemplate)card;
+                if (cardData.cardSuit == Counters.trickSuit)
+                {
+                    hasTrickSuit = true;
+                    break;
+                }
             }
         }
+
         //wild cards can always be played || no trick suit set yet
         if (clickedCard.cardSuit == Counters.Suit.None) {return true;}
 

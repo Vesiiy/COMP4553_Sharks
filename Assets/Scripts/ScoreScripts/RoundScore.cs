@@ -34,6 +34,7 @@ public class RoundScore : MonoBehaviour
             {
                 Counters.trickSuit = (Counters.Suit)card.GetType().GetField("cardSuit").GetValue(card);
                 Counters.trickSetCheck = false;
+                Debug.Log ("Trick suit set to: " + Counters.trickSuit);
             }
         }
 
@@ -104,13 +105,17 @@ public class RoundScore : MonoBehaviour
                 }
         }
         breakLoop:
-        Counters.trickSuit = Counters.Suit.None;
+
         ClearCardsPlayed();
         playerScores[held.Item2]++;
         Debug.Log("Player " + held.Item2 + " won the trick with: " + held.Item1);
 
+        // Update counter variables 
+        Counters.trickSuit = Counters.Suit.None;
         Counters.trickOver = true;
         Counters.currentTurn = held.Item2;
+        Counters.trickSetCheck = true;
+
         StartCoroutine(gameOverlayScript.ClearCardPlayArea());
     }
 
@@ -126,7 +131,12 @@ public class RoundScore : MonoBehaviour
             if (Counters.playerBet[i] == playerScores[i])
             { temp = 20 + (playerScores[i] * 10); }
             else
-            { temp = (Counters.playerBet[i] - playerScores[i]) * -10; }
+            {
+                if (playerScores[i] > Counters.playerBet[i])
+                { temp = (playerScores[i] - Counters.playerBet[i]) * -10; }
+                else
+                { temp = (Counters.playerBet[i] - playerScores[i]) * -10; }
+            }
 
             // Update round scores and reset player scores
             Counters.roundScores[i] += temp;

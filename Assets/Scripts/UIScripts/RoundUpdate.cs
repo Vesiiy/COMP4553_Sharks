@@ -32,9 +32,6 @@ public class RoundUpdate: MonoBehaviour
             Counters.roundNum++;
             Counters.bettingPhase = true;
             NextTrumpSuit();
-            Counters.trickSetCheck = true;
-
-            Debug.Log("Trump Suit: " + Counters.trumpSuit);
 
             gameOverlayScript.UpdateRound();
             deckBehaviourScript.DealCards();
