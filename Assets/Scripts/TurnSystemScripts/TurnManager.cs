@@ -51,7 +51,7 @@ public class TurnManager : MonoBehaviour
 
     public IEnumerator BotTurn()
     {
-        yield return new WaitForSeconds(1f); //Delays bots reaction for increased immersion
+        yield return new WaitForSeconds(2f); //Delays bots reaction for increased immersion
 
         //Bots either place bet or play card
         if (Counters.bettingPhase && Counters.cardsInPlay != 0) {BotPlaceBet();}

@@ -1,4 +1,7 @@
 using UnityEngine;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 
 public class GameOverlay: MonoBehaviour
@@ -74,5 +77,29 @@ public class GameOverlay: MonoBehaviour
         Transform cards_TMP = panel.Find("Cards_TMP");
         TMP_Text cardsText = cards_TMP.GetComponent<TMP_Text>();
         cardsText.text = "Cards: " + cardCounts[playerIndex];
+    }
+
+    public void UpdateCardPlayArea(int slotIndex, List<Tuple<ScriptableObject, int, int>> cardsPlayed)
+    {
+        GameObject cardPlayArea = GameObject.Find("CardPlayArea");
+
+        Transform slot = cardPlayArea.transform.GetChild(slotIndex);
+        SpriteRenderer spriteRenderer = slot.GetComponent<SpriteRenderer>();
+
+        ScriptableObject cardData = cardsPlayed[slotIndex].Item1;
+        Sprite cardSprite = (Sprite)cardData.GetType().GetField("cardFront").GetValue(cardData);
+
+        spriteRenderer.sprite = cardSprite;
+    }
+
+    public IEnumerator ClearCardPlayArea()
+    {
+        yield return new WaitForSeconds(2f);
+        GameObject cardPlayArea = GameObject.Find("CardPlayArea");
+
+        for (int i = 0; i < cardPlayArea.transform.childCount; i++)
+        {
+            cardPlayArea.transform.GetChild(i).GetComponent<SpriteRenderer>().sprite = null;
+        }
     }
 }

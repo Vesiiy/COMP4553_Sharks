@@ -23,12 +23,10 @@ public class Card : MonoBehaviour
         this.playerId = playerId;
 
         // Instantiate a card clone
-        Debug.Log("" + playerId);
-
         GameObject cardObject = Instantiate(cardPrefab);
         cardObject.transform.SetParent(GameObject.Find("PlayerHand_" + playerId).transform, false);
 
-        Debug.Log($"Dealing card to Player {playerId} - Card Object: {cardObject.name}");
+        //Debug.Log($"Dealing card to Player {playerId} - Card Object: {cardObject.name}");
 
 
         // Assign new values to the card clone
@@ -72,11 +70,14 @@ public class Card : MonoBehaviour
         //Restricts user from playing cards as per game rules
         if (Counters.currentTurn == 0 && !Counters.bettingPhase) 
         {
-            roundScoreScript.AddCard(card, playerId);
-            playerHandScript.RemoveCard(card, playerId);
-            Destroy(gameObject);
+            if (playerHandScript.CanPlayCard(this, playerId))
+            {
+                roundScoreScript.AddCard(card, playerId);
+                playerHandScript.RemoveCard(card, playerId);
+                Destroy(gameObject);
 
-            FindFirstObjectByType<TurnManager>().UpdateCurrentTurn();
+                FindFirstObjectByType<TurnManager>().UpdateCurrentTurn();
+            }
         }
     }
 }

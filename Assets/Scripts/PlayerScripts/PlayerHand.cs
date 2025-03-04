@@ -29,18 +29,33 @@ public class PlayerHand : MonoBehaviour
     }
 
     // Check the contents of each hand -- used for testing
-    public void CheckHands()
+    public bool CanPlayCard(Card clickedCard, int playerId)
     {
-        foreach (var item in playerHands)
-        {
-            string key = item.Key;
-            List<ScriptableObject> objectList = item.Value;
+        Debug.Log(Counters.trickSuit);
 
-            foreach (var card in objectList)
+        string key = "PlayerHand_" + playerId;
+        bool hasTrickSuit = false;
+
+        foreach (var card in playerHands[key])
+        {
+            CardTemplate cardData = (CardTemplate)card;
+            if (cardData.cardSuit == Counters.trickSuit)
             {
-                Debug.Log("Key: " + key + " Card: " + card);
+                hasTrickSuit = true;
+                break;
             }
         }
+        //wild cards can always be played || no trick suit set yet
+        if (clickedCard.cardSuit == Counters.Suit.None) {return true;}
+
+        //if player has trick suit, they must play it
+        else if (hasTrickSuit && clickedCard.cardSuit != Counters.trickSuit)
+        {
+            Debug.Log("Must play card from trick suit");
+            return false;
+        }
+
+        return true;
     }
 
     // Remove a card from the player's hand
@@ -50,9 +65,8 @@ public class PlayerHand : MonoBehaviour
         playerHands[key].Remove(card);
         Counters.cardsInPlay--;
         Debug.Log("Cards in play: " + Counters.cardsInPlay);
-
-
     }
+
 
     // Clears all player hands -- used for testing 
     public void ClearPlayerHands()

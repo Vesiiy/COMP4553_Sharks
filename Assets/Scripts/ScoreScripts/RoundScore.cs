@@ -40,9 +40,8 @@ public class RoundScore : MonoBehaviour
 
         // Add card to the list of cards played
         cardsPlayed.Add(new Tuple<ScriptableObject, int, int>(card, playerId, playOrder));
+        gameOverlayScript.UpdateCardPlayArea(playOrder, cardsPlayed);
         playOrder++;
-
-        UpdateCardPlayArea();
 
         // Calculate trick winner when all players have played a card
         if (playOrder == Counters.playerNum)
@@ -57,6 +56,7 @@ public class RoundScore : MonoBehaviour
     public void CalculateTrickWinner()
     {
         Tuple<ScriptableObject, int, int> held = cardsPlayed[0];
+        bool sharkPlayed = false;
 
         foreach (var item in cardsPlayed)
         {
@@ -74,8 +74,13 @@ public class RoundScore : MonoBehaviour
                         break;
                     // item = win
                     case var _ when itemWeight == 15:
-                        held = item;
-                        goto breakLoop;
+                        if (!sharkPlayed)
+                        {
+                            sharkPlayed = true;
+                            held = item;
+                            break;
+                        }
+                        else {break;}
                     // item = trumpSuit
                     case var _ when itemSuit == Counters.trumpSuit:
                         // held && item = trumpSuit --- check weight
@@ -102,15 +107,16 @@ public class RoundScore : MonoBehaviour
                         break;
                 }
         }
-
-    breakLoop:
+        sharkPlayed = false;
+        Counters.trickSuit = Counters.Suit.None;
         ClearCardsPlayed();
         playerScores[held.Item2]++;
         Debug.Log("Player " + held.Item2 + " won the trick.");
         UpdateScores();
-        StartCoroutine(ClearCardPlayArea());
+
         Counters.trickOver = true;
         Counters.currentTurn = held.Item2;
+        StartCoroutine(gameOverlayScript.ClearCardPlayArea());
     }
 
     public void ClearCardsPlayed() { cardsPlayed.Clear(); }
@@ -142,26 +148,5 @@ public class RoundScore : MonoBehaviour
 
             Debug.Log("Player " + i + " scored " + temp + " points this round and has " + Counters.roundScores[i] + " points");
         }
-    }
-
-    public void UpdateCardPlayArea()
-    {
-        var lastPlayedCard = cardsPlayed[cardsPlayed.Count - 1];
-        ScriptableObject cardData = lastPlayedCard.Item1;
-
-        Sprite cardSprite = (Sprite)cardData.GetType().GetField("cardFront").GetValue(cardData);
-
-        GameObject cardPlayArea = GameObject.Find("CardPlayArea");
-
-        SpriteRenderer spriteRenderer = cardPlayArea.GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = cardSprite;
-    }
-
-    public IEnumerator ClearCardPlayArea()
-    {
-        yield return new WaitForSeconds(3f);
-        GameObject cardPlayArea = GameObject.Find("CardPlayArea");
-        SpriteRenderer spriteRenderer = cardPlayArea.GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = null;
     }
 }
