@@ -151,7 +151,7 @@ public class RoundScore : MonoBehaviour
             }
             playerScores[i] = 0;
 
-            Debug.Log("Player " + i + " scored " + temp + " points this round and has " + Counters.roundScores[i] + " points");
+            // Debug.Log("Player " + i + " scored " + temp + " points this round and has " + Counters.roundScores[i] + " points");
         }
     }
 }
