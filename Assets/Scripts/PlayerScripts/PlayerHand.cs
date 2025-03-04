@@ -31,7 +31,7 @@ public class PlayerHand : MonoBehaviour
     // Check the contents of each hand -- used for testing
     public bool CanPlayCard(Card clickedCard, int playerId)
     {
-        Debug.Log(Counters.trickSuit);
+        Debug.Log("Trick Suit: " + Counters.trickSuit);
 
         string key = "PlayerHand_" + playerId;
         bool hasTrickSuit = false;
@@ -64,9 +64,23 @@ public class PlayerHand : MonoBehaviour
         string key = "PlayerHand_" + playerId;
         playerHands[key].Remove(card);
         Counters.cardsInPlay--;
-        Debug.Log("Cards in play: " + Counters.cardsInPlay);
+        // Debug.Log("Cards in play: " + Counters.cardsInPlay);
     }
 
+    // Check the contents of each hand -- used for testing
+    public void CheckHands()
+    {
+        foreach (var item in playerHands)
+        {
+            string key = item.Key;
+            List<ScriptableObject> objectList = item.Value;
+
+            foreach (var card in objectList)
+            {
+                Debug.Log("Key: " + key + " Card: " + card);
+            }
+        }
+    }
 
     // Clears all player hands -- used for testing 
     public void ClearPlayerHands()

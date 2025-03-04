@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -165,7 +165,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -8622259438476403829, guid: 871eb552324cf6842aa358be8b0a0f68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 6.75, y: 10.5}
@@ -268,6 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHandScript: {fileID: 0}
   roundScoreScript: {fileID: 0}
+  turnManagerScript: {fileID: 0}
   cardPrefab: {fileID: 7715708311805724111}
   cardSuit: 0
   cardWeight: 0

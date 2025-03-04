@@ -29,14 +29,14 @@ public class RoundUpdate: MonoBehaviour
     {
         if (Counters.cardsInPlay == 0)
         {
-            Debug.Log(Counters.trumpSuit);
             Counters.roundNum++;
             Counters.bettingPhase = true;
             NextTrumpSuit();
             Counters.trickSetCheck = true;
 
+            Debug.Log("Trump Suit: " + Counters.trumpSuit);
+
             gameOverlayScript.UpdateRound();
-    
             deckBehaviourScript.DealCards();
             turnManagerScript.UpdateRoundStarter();
 

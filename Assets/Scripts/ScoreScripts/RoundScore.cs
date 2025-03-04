@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -48,6 +47,12 @@ public class RoundScore : MonoBehaviour
         {
             playOrder = 0;
             CalculateTrickWinner();
+
+            // Calculate scores once all cards have been played
+            if (Counters.cardsInPlay == 0)
+            {
+                UpdateScores();
+            }
         }
     }
 
@@ -56,7 +61,6 @@ public class RoundScore : MonoBehaviour
     public void CalculateTrickWinner()
     {
         Tuple<ScriptableObject, int, int> held = cardsPlayed[0];
-        bool sharkPlayed = false;
 
         foreach (var item in cardsPlayed)
         {
@@ -74,13 +78,8 @@ public class RoundScore : MonoBehaviour
                         break;
                     // item = win
                     case var _ when itemWeight == 15:
-                        if (!sharkPlayed)
-                        {
-                            sharkPlayed = true;
-                            held = item;
-                            break;
-                        }
-                        else {break;}
+                        held = item;
+                        goto breakLoop;
                     // item = trumpSuit
                     case var _ when itemSuit == Counters.trumpSuit:
                         // held != trumpSuit && item != lose
@@ -104,12 +103,11 @@ public class RoundScore : MonoBehaviour
                         break;
                 }
         }
-        sharkPlayed = false;
+        breakLoop:
         Counters.trickSuit = Counters.Suit.None;
         ClearCardsPlayed();
         playerScores[held.Item2]++;
-        Debug.Log("Player " + held.Item2 + " won the trick.");
-        UpdateScores();
+        Debug.Log("Player " + held.Item2 + " won the trick with: " + held.Item1);
 
         Counters.trickOver = true;
         Counters.currentTurn = held.Item2;
