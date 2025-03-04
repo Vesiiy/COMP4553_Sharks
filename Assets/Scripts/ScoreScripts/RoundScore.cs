@@ -83,13 +83,10 @@ public class RoundScore : MonoBehaviour
                         else {break;}
                     // item = trumpSuit
                     case var _ when itemSuit == Counters.trumpSuit:
-                        // held && item = trumpSuit --- check weight
-                        if (heldSuit == Counters.trumpSuit)
-                        {
-                            if (itemWeight > heldWeight) { held = item; }
-                        }
                         // held != trumpSuit && item != lose
-                        else if (itemWeight != 1) { held = item; }
+                        if (heldSuit != Counters.trumpSuit && itemWeight != 1) { held = item; }
+                        // held && item = trumpSuit --- check weight
+                        else if (itemWeight > heldWeight) { held = item; }
                         break;
                     // item = trickSuit
                     case var _ when itemSuit == Counters.trickSuit:

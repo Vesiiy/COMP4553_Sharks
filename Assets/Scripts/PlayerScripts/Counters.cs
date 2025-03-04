@@ -31,7 +31,7 @@ public class Counters : MonoBehaviour
         // Initializing variables
         playerNum = NumberOfPlayers;
         roundNum = 0;
-        trumpSuit = Suit.Club;
+        trumpSuit = Suit.None;
         nextRoundStarter = 0;
         bettingPhase = true;
         trickOver = false;
