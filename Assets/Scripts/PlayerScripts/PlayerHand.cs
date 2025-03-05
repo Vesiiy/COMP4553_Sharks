@@ -65,8 +65,6 @@ public class PlayerHand : MonoBehaviour
     {
         string key = "PlayerHand_" + playerId;
         playerHands[key].Remove(card);
-        Counters.cardsInPlay--;
-        // Debug.Log("Cards in play: " + Counters.cardsInPlay);
     }
 
     // Check the contents of each hand -- used for testing

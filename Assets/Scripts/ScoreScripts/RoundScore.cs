@@ -44,6 +44,8 @@ public class RoundScore : MonoBehaviour
         cardsPlayed.Add(new Tuple<ScriptableObject, int, int>(card, playerId, playOrder));
         gameOverlayScript.UpdateCardPlayArea(playOrder, cardsPlayed);
         playOrder++;
+        Counters.cardsInPlay--;
+        //Debug.Log("Cards in play: " + Counters.cardsInPlay);
 
         // Calculate trick winner when all players have played a card
         if (playOrder == Counters.playerNum)
