@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ public class GameOverlay: MonoBehaviour
     public TextMeshProUGUI trumpSuitTMP;
     public TextMeshProUGUI trickSuitTMP;
     public GameObject playerUI;
+    public Image[] playerPanels;
     private int[] cardCounts;
 
     // Update round counter TMP
@@ -121,5 +123,23 @@ public class GameOverlay: MonoBehaviour
         {
             cardPlayArea.transform.GetChild(i).GetComponent<SpriteRenderer>().sprite = null;
         }
+    }
+
+    public void TurnIndicator(int playerIndex)
+    {
+        for (int i = 0; i < Counters.playerNum; i++)
+        {
+            Color panelColor = playerPanels[i].color;
+            if (i == playerIndex) 
+            {
+                panelColor.a = 1.0f;
+            }
+            else
+            {
+                panelColor.a = 0.0f;
+            }
+            playerPanels[i].color = panelColor;
+        }
+
     }
 }

@@ -40,6 +40,7 @@ public class TurnManager : MonoBehaviour
     //Progresses game to next user turn
     public void NextPlayerTurn() 
     {
+        gameOverlayScript.TurnIndicator(Counters.currentTurn);
         // Debug.Log("Current turn: " + Counters.currentTurn);
 
         //Bots turns
@@ -81,7 +82,7 @@ public class TurnManager : MonoBehaviour
 
     public void BotPlaceBet() 
     {
-        int botBet = Random.Range(0, Counters.roundNum);
+        int botBet = Random.Range(0, Counters.roundNum + 1);
         Counters.playerBet[Counters.currentTurn] = botBet;
 
         // Debug.Log("Player " + Counters.currentTurn + " Bet: " + botBet);

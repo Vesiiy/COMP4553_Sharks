@@ -44,7 +44,10 @@ public class RoundUpdate: MonoBehaviour
     // Update the trump suit
     public void NextTrumpSuit()
     {
-        if (Counters.trumpSuit == Counters.Suit.None) { Counters.trumpSuit = Counters.Suit.Club; }
+        if (Counters.trumpSuit == Counters.Suit.None || Counters.trumpSuit == Counters.Suit.Diamond) 
+        {
+            Counters.trumpSuit = Counters.Suit.Club; 
+        }
         else { Counters.trumpSuit++; }
         gameOverlayScript.UpdateTrumpSuit();
     }
