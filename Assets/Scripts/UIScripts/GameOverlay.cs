@@ -11,6 +11,7 @@ public class GameOverlay: MonoBehaviour
     public TextMeshProUGUI playerBetTMP;
     public TextMeshProUGUI playerScoreTMP;
     public TextMeshProUGUI trumpSuitTMP;
+    public TextMeshProUGUI trickSuitTMP;
     public GameObject playerUI;
     private int[] cardCounts;
 
@@ -32,6 +33,18 @@ public class GameOverlay: MonoBehaviour
     public void UpdateTrumpSuit()
     {
         trumpSuitTMP.text = "Trump: " + Counters.trumpSuit;
+    }
+
+    public void UpdateTrickSuit()
+    {
+        if (!Counters.trickOver)
+        {
+            trickSuitTMP.text = "Trick: " + Counters.trickSuit;
+        }
+        else if (Counters.trickOver)
+        {
+            trickSuitTMP.text = "Trick: ";
+        }
     }
 
     // Update player bet TMP

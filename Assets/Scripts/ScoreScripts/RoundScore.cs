@@ -35,6 +35,7 @@ public class RoundScore : MonoBehaviour
                 Counters.trickSuit = (Counters.Suit)card.GetType().GetField("cardSuit").GetValue(card);
                 Counters.trickSetCheck = false;
                 Debug.Log ("Trick suit set to: " + Counters.trickSuit);
+                gameOverlayScript.UpdateTrickSuit();
             }
         }
 
@@ -116,6 +117,7 @@ public class RoundScore : MonoBehaviour
         Counters.currentTurn = held.Item2;
         Counters.trickSetCheck = true;
 
+        gameOverlayScript.UpdateTrickSuit();
         StartCoroutine(gameOverlayScript.ClearCardPlayArea());
     }
 
