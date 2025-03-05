@@ -76,8 +76,16 @@ public class RoundScore : MonoBehaviour
                 {
                     // First card played
                     case var (_, _, item3) when item3 == 0:
-                        held = item;
-                        break;
+                        if (itemWeight == 15) 
+                        {
+                            held = item;
+                            goto breakLoop;
+                        }
+                        else
+                        {
+                            held = item;
+                            break;
+                        }
                     // item = win
                     case var _ when itemWeight == 15:
                         held = item;
