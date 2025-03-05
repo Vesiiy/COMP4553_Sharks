@@ -165,30 +165,9 @@ public class GameOverlay: MonoBehaviour
         replayButton.gameObject.SetActive(true);
 
         winLoseTMP.gameObject.SetActive(true);
-        resultsObject.SetActive(true);
 
         if (win) { winLoseTMP.text = "You Win!"; }
         else { winLoseTMP.text = "You Lose"; }
-
-        // This is only if we decide to display the results on the pause panel 
-        //for (int i = 0; i < Counters.playerNum; i++)
-        //{
-        //    TextMeshProUGUI temp = resultsObject.transform.Find("Player_" + i).GetComponent<TextMeshProUGUI>();
-        //    switch (i)
-        //    {
-        //        case 0:
-        //            temp.text = "You Scored: " + Counters.roundScores[i];
-        //            break;
-        //        case 1:
-        //            temp.text = "Player 1: " + Counters.roundScores[i];
-        //            break;
-        //        case 2:
-        //            temp.text = "Player 2: " + Counters.roundScores[i];
-        //            break;
-        //        default:
-        //            break;
-        //    }
-        //}
     }
     public void TurnIndicator(int playerIndex)
     {
