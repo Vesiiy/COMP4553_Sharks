@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameOverlay: MonoBehaviour
 {
@@ -11,8 +12,18 @@ public class GameOverlay: MonoBehaviour
     public TextMeshProUGUI playerBetTMP;
     public TextMeshProUGUI playerScoreTMP;
     public TextMeshProUGUI trumpSuitTMP;
+    public TextMeshProUGUI winLoseTMP;
+
+    public Button returnButton;
+    public Button replayButton;
+
+    public GameObject pauseOverlayCanvas;
     public GameObject playerUI;
+    public GameObject resultsObject;
+
+    // Private Variables
     private int[] cardCounts;
+    private bool isPaused;
 
     // Update round counter TMP
     private void Awake()
@@ -107,6 +118,47 @@ public class GameOverlay: MonoBehaviour
         for (int i = 0; i < cardPlayArea.transform.childCount; i++)
         {
             cardPlayArea.transform.GetChild(i).GetComponent<SpriteRenderer>().sprite = null;
+        }
+    }
+
+    private void Paused() { isPaused = !isPaused; }
+
+    public void PauseGame()
+    {
+        Paused();
+        pauseOverlayCanvas.SetActive(isPaused);
+    }
+
+    public void GameEnd(bool win)
+    {
+        PauseGame();
+
+        returnButton.gameObject.SetActive(false);
+        replayButton.gameObject.SetActive(true);
+
+        winLoseTMP.gameObject.SetActive(true);
+        resultsObject.SetActive(true);
+
+        if (win) { winLoseTMP.text = "You Win!"; }
+        else { winLoseTMP.text = "You Lose"; }
+
+        for (int i = 0; i < Counters.playerNum; i++)
+        {
+            TextMeshProUGUI temp = resultsObject.transform.Find("Player_" + i).GetComponent<TextMeshProUGUI>();
+            switch (i)
+            {
+                case 0:
+                    temp.text = "You Scored: " + Counters.roundScores[i];
+                    break;
+                case 1:
+                    temp.text = "Player 1: " + Counters.roundScores[i];
+                    break;
+                case 2:
+                    temp.text = "Player 2: " + Counters.roundScores[i];
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

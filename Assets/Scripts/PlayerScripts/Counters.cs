@@ -9,17 +9,17 @@ public class Counters : MonoBehaviour
     public static int playerNum;
     public static int roundNum;
     public static int cardsInPlay;
-    public static bool bettingPhase;
     public static int betsPlaced;
+    public static int currentTurn;
+    public static int nextRoundStarter;
 
     public static Suit trumpSuit;
     public static Suit trickSuit;
     
     public static bool trickSetCheck;
-
-    public static int currentTurn;
+    public static bool bettingPhase;
     public static bool trickOver;
-    public static int nextRoundStarter;
+
     public static List<int> playerBet = new();
     public static List<int> roundScores = new();
 
@@ -31,12 +31,17 @@ public class Counters : MonoBehaviour
         // Initializing variables
         playerNum = NumberOfPlayers;
         roundNum = 0;
-        trumpSuit = Suit.None;
+        cardsInPlay = 0;
+        betsPlaced = 0;
+        currentTurn = 0;
         nextRoundStarter = 0;
+
+        trumpSuit = Suit.None;
+        // trickSuit = Suit.None;
+
         trickSetCheck = true;
         bettingPhase = true;
         trickOver = false;
-        betsPlaced = 0;
 
         for (int i = 0; i < playerNum; i++) { playerBet.Add(0); }
         for (int i = 0; i < playerNum; i++) { roundScores.Add(0); }

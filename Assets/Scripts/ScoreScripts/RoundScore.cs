@@ -16,6 +16,7 @@ public class RoundScore : MonoBehaviour
     [NonSerialized]
     private int playOrder;
     private int tempCardWeight;
+    private bool winner;
 
     private void Start()
     {
@@ -153,5 +154,22 @@ public class RoundScore : MonoBehaviour
 
             // Debug.Log("Player " + i + " scored " + temp + " points this round and has " + Counters.roundScores[i] + " points");
         }
+
+        // Game over
+        // NOTE: once we add options for round numbers change this to
+        // Counters.roundNum == (60 / Counters.playerNum)
+        if (Counters.roundNum == 2) 
+        {
+            gameOverlayScript.GameEnd(CheckWinner()); 
+        }
+    }
+
+    public bool CheckWinner()
+    {
+        for (int i = 0; i < Counters.playerNum; i++)
+        {
+            winner = (Counters.roundScores[1] > Counters.roundScores[i]);
+        }
+        return winner;
     }
 }
