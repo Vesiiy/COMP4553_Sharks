@@ -4,7 +4,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEngine.UI;
 
 public class GameOverlay: MonoBehaviour
 {
@@ -24,7 +23,6 @@ public class GameOverlay: MonoBehaviour
 
     // Private Variables
     public TextMeshProUGUI trickSuitTMP;
-    public GameObject playerUI;
     public Image[] playerPanels;
     private int[] cardCounts;
     private bool isPaused;
@@ -176,6 +174,7 @@ public class GameOverlay: MonoBehaviour
                     break;
             }
         }
+    }
     public void TurnIndicator(int playerIndex)
     {
         for (int i = 0; i < Counters.playerNum; i++)
