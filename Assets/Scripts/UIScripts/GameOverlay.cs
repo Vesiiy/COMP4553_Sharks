@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,6 +23,9 @@ public class GameOverlay: MonoBehaviour
     public GameObject resultsObject;
 
     // Private Variables
+    public TextMeshProUGUI trickSuitTMP;
+    public GameObject playerUI;
+    public Image[] playerPanels;
     private int[] cardCounts;
     private bool isPaused;
 
@@ -43,6 +47,18 @@ public class GameOverlay: MonoBehaviour
     public void UpdateTrumpSuit()
     {
         trumpSuitTMP.text = "Trump: " + Counters.trumpSuit;
+    }
+
+    public void UpdateTrickSuit()
+    {
+        if (!Counters.trickOver)
+        {
+            trickSuitTMP.text = "Trick: " + Counters.trickSuit;
+        }
+        else if (Counters.trickOver)
+        {
+            trickSuitTMP.text = "Trick: ";
+        }
     }
 
     // Update player bet TMP
@@ -160,5 +176,21 @@ public class GameOverlay: MonoBehaviour
                     break;
             }
         }
+    public void TurnIndicator(int playerIndex)
+    {
+        for (int i = 0; i < Counters.playerNum; i++)
+        {
+            Color panelColor = playerPanels[i].color;
+            if (i == playerIndex) 
+            {
+                panelColor.a = 1.0f;
+            }
+            else
+            {
+                panelColor.a = 0.0f;
+            }
+            playerPanels[i].color = panelColor;
+        }
+
     }
 }
