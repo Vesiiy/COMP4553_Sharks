@@ -48,7 +48,7 @@ public class PlayerHand : MonoBehaviour
         }
 
         //wild cards can always be played || no trick suit set yet
-        if (clickedCard.cardSuit == Counters.Suit.None) {return true;}
+        if (clickedCard.cardWeight == 15 || clickedCard.cardWeight == 1) {return true;}
 
         //if player has trick suit, they must play it
         else if (hasTrickSuit && clickedCard.cardSuit != Counters.trickSuit)
