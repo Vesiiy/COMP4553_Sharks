@@ -158,7 +158,7 @@ public class RoundScore : MonoBehaviour
         // Game over
         // NOTE: once we add options for round numbers change this to
         // Counters.roundNum == (60 / Counters.playerNum)
-        if (Counters.roundNum == 2) 
+        if (Counters.roundNum == 10) 
         {
             gameOverlayScript.GameEnd(CheckWinner()); 
         }
