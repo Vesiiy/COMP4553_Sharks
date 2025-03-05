@@ -120,6 +120,7 @@ public class RoundScore : MonoBehaviour
 
         ClearCardsPlayed();
         playerScores[held.Item2]++;
+        gameOverlayScript.UpdateTrick(held.Item2, playerScores[held.Item2]);
         Debug.Log("Player " + held.Item2 + " won the trick with: " + held.Item1);
 
         // Update counter variables 
