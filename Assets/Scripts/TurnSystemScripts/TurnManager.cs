@@ -69,13 +69,25 @@ public class TurnManager : MonoBehaviour
         //only plays card if any exist
         if (botHand.transform.childCount > 0)
         {
-            GameObject cardToDestroy = botHand.transform.GetChild(0).gameObject;
-            ScriptableObject cardToPlay = cardToDestroy.GetComponent<Card>().card;
+            bool cardPlayed = false;
+            int cardInHand = 0;
 
-            gameOverlayScript.UpdateBotCardCount(Counters.currentTurn);
-            playerHandScript.RemoveCard(cardToPlay, Counters.currentTurn);
-            roundScoreScript.AddCard(cardToPlay, Counters.currentTurn);
-            Destroy(cardToDestroy);
+            while (!cardPlayed)
+            {
+                GameObject cardToDestroy = botHand.transform.GetChild(cardInHand).gameObject;
+                Card cardToPlay = cardToDestroy.GetComponent<Card>();
+
+                if (playerHandScript.CanPlayCard(cardToPlay, Counters.currentTurn))
+                {
+                    gameOverlayScript.UpdateBotCardCount(Counters.currentTurn);
+                    playerHandScript.RemoveCard(cardToPlay.card, Counters.currentTurn);
+                    roundScoreScript.AddCard(cardToPlay.card, Counters.currentTurn);
+                    Destroy(cardToDestroy);
+
+                    cardPlayed = true;
+                }
+                else {cardInHand++;}
+            }
         }
 
     } 
