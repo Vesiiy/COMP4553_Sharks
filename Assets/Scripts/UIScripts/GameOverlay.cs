@@ -161,6 +161,7 @@ public class GameOverlay: MonoBehaviour
     {
         PauseGame();
 
+        // Switch to game end pause overlay
         returnButton.gameObject.SetActive(false);
         replayButton.gameObject.SetActive(true);
 

@@ -11,12 +11,12 @@ public class RoundScore : MonoBehaviour
 
     public List<Tuple<ScriptableObject, int, int>> cardsPlayed = new();
     public List<int> playerScores = new();
+    public bool winner;
 
     // Private variables
     [NonSerialized]
     private int playOrder;
     private int tempCardWeight;
-    private bool winner;
 
     private void Start()
     {
@@ -169,9 +169,9 @@ public class RoundScore : MonoBehaviour
         }
 
         // Game over
-        // NOTE: once we add options for round numbers change this to
+        // NOTE: if we add options for round numbers change this to
         // Counters.roundNum == (60 / Counters.playerNum)
-        if (Counters.roundNum == 10) 
+        if (Counters.roundNum == 3) 
         {
             gameOverlayScript.GameEnd(CheckWinner()); 
         }
@@ -179,9 +179,10 @@ public class RoundScore : MonoBehaviour
 
     public bool CheckWinner()
     {
-        for (int i = 0; i < Counters.playerNum; i++)
+        for (int i = 1; i < Counters.playerNum; i++)
         {
-            winner = (Counters.roundScores[1] > Counters.roundScores[i]);
+            winner = (Counters.roundScores[0] > Counters.roundScores[i]);
+            if (!winner) { break; }
         }
         return winner;
     }
