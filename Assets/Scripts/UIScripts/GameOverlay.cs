@@ -54,10 +54,18 @@ public class GameOverlay: MonoBehaviour
         if (!Counters.trickOver)
         {
             trickSuitTMP.text = "Trick: " + Counters.trickSuit;
+
+            if (Counters.roundNum % 5 == 0) {
+                trumpSuitTMP.text = "Trump: " + Counters.trickSuit;
+            }
         }
         else if (Counters.trickOver)
         {
             trickSuitTMP.text = "Trick: ";
+
+            if (Counters.roundNum % 5 == 0) {
+                trumpSuitTMP.text = "Trump: None";
+            }
         }
     }
 
