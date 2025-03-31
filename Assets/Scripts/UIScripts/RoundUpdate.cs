@@ -13,6 +13,7 @@ public class RoundUpdate: MonoBehaviour
 
     public TMP_InputField playerBetInput;
     public Button submitBetButton;
+    public GameObject nextRoundButton;
     public GameObject[] betObjects;
 
     // Private variables
@@ -20,6 +21,7 @@ public class RoundUpdate: MonoBehaviour
 
     private void Start()
     {
+        nextRoundButton.SetActive(false);
         ObjectActive(betObjects);
         NextRound();
     }

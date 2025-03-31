@@ -8,6 +8,7 @@ public class RoundScore : MonoBehaviour
     public PlayerHand playerHandScript;
     public RoundUpdate roundUpdateScript;
     public GameOverlay gameOverlayScript;
+    public GameObject nextRoundButton;
 
     public List<Tuple<ScriptableObject, int, int>> cardsPlayed = new();
     public List<int> playerScores = new();
@@ -45,6 +46,8 @@ public class RoundScore : MonoBehaviour
         gameOverlayScript.UpdateCardPlayArea(playOrder, cardsPlayed);
         playOrder++;
         Counters.cardsInPlay--;
+
+
         //Debug.Log("Cards in play: " + Counters.cardsInPlay);
 
         // Calculate trick winner when all players have played a card
@@ -56,6 +59,7 @@ public class RoundScore : MonoBehaviour
             // Calculate scores once all cards have been played
             if (Counters.cardsInPlay == 0)
             {
+                nextRoundButton.SetActive(!nextRoundButton.activeSelf);
                 UpdateScores();
             }
         }

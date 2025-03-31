@@ -3604,6 +3604,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1789828484}
     - target: {fileID: 1883254046391254316, guid: cb37eab15b0d14741817b9d633f355e6, type: 3}
+      propertyPath: nextRoundButton
+      value: 
+      objectReference: {fileID: 1460094374}
+    - target: {fileID: 1883254046391254316, guid: cb37eab15b0d14741817b9d633f355e6, type: 3}
       propertyPath: submitBetButton
       value: 
       objectReference: {fileID: 1508191691}
@@ -5097,6 +5101,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScoreManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3257259704751574766, guid: 28f04fd4eeba1f64582d7b950aad2d7c, type: 3}
+      propertyPath: nextRoundButton
+      value: 
+      objectReference: {fileID: 1460094374}
     - target: {fileID: 3257259704751574766, guid: 28f04fd4eeba1f64582d7b950aad2d7c, type: 3}
       propertyPath: playerHandScript
       value: 
