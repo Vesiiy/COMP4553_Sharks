@@ -3551,6 +3551,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1227845450}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1322298682 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4692097631280642401, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
+  m_PrefabInstance: {fileID: 189352735}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1338610353
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3648,6 +3659,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 531470551}
     - target: {fileID: 3510808996527138499, guid: cb37eab15b0d14741817b9d633f355e6, type: 3}
+      propertyPath: betInputTMP
+      value: 
+      objectReference: {fileID: 759761469}
+    - target: {fileID: 3510808996527138499, guid: cb37eab15b0d14741817b9d633f355e6, type: 3}
       propertyPath: playerBetTMP
       value: 
       objectReference: {fileID: 1262510215}
@@ -3688,6 +3703,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3510808996527138499, guid: cb37eab15b0d14741817b9d633f355e6, type: 3}
+      propertyPath: playerBets.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3510808996527138499, guid: cb37eab15b0d14741817b9d633f355e6, type: 3}
       propertyPath: playerPanels.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -3703,6 +3722,18 @@ PrefabInstance:
       propertyPath: 'trickWins.Array.data[2]'
       value: 
       objectReference: {fileID: 1870249132}
+    - target: {fileID: 3510808996527138499, guid: cb37eab15b0d14741817b9d633f355e6, type: 3}
+      propertyPath: 'playerBets.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1262510215}
+    - target: {fileID: 3510808996527138499, guid: cb37eab15b0d14741817b9d633f355e6, type: 3}
+      propertyPath: 'playerBets.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2008474578}
+    - target: {fileID: 3510808996527138499, guid: cb37eab15b0d14741817b9d633f355e6, type: 3}
+      propertyPath: 'playerBets.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1322298682}
     - target: {fileID: 3510808996527138499, guid: cb37eab15b0d14741817b9d633f355e6, type: 3}
       propertyPath: 'playerPanels.Array.data[0]'
       value: 
@@ -4804,6 +4835,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1927988466}
   m_CullTransparentMesh: 1
+--- !u!114 &2008474578 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4692097631280642401, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
+  m_PrefabInstance: {fileID: 363816847}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2043615703
 GameObject:
   m_ObjectHideFlags: 0

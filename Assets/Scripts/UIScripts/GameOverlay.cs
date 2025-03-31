@@ -14,6 +14,7 @@ public class GameOverlay: MonoBehaviour
     public TextMeshProUGUI trumpSuitTMP;
     public TextMeshProUGUI winLoseTMP;
     public TextMeshProUGUI[] trickWins;
+    public TextMeshProUGUI[] playerBets;
 
     public Button returnButton;
     public Button replayButton;
@@ -76,6 +77,14 @@ public class GameOverlay: MonoBehaviour
         for (int i = 0; i < Counters.playerNum; i++)
         {
             trickWins[i].text = "Tricks: ";
+        }
+    }
+
+    public void ClearBets()
+    {
+        for (int i = 0; i < Counters.playerNum; i++)
+        {
+            playerBets[i].text = "Bet: ";
         }
     }
 

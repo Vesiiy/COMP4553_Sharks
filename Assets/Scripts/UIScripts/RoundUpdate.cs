@@ -38,6 +38,7 @@ public class RoundUpdate: MonoBehaviour
 
             StartCoroutine(gameOverlayScript.ClearCardPlayArea(true));
             gameOverlayScript.ClearTricks();
+            gameOverlayScript.ClearBets();
             gameOverlayScript.UpdateRound();
             deckBehaviourScript.DealCards();
             turnManagerScript.UpdateRoundStarter();
