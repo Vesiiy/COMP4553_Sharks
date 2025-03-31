@@ -138,11 +138,16 @@ public class GameOverlay: MonoBehaviour
         spriteRenderer.sprite = cardSprite;
     }
 
-    public IEnumerator ClearCardPlayArea()
+    public IEnumerator ClearCardPlayArea(bool nextRound)
     {
-        yield return new WaitForSeconds(2f);
         GameObject cardPlayArea = GameObject.Find("CardPlayArea");
 
+        if (!nextRound) {
+            yield return new WaitForSeconds(2f);
+        } else {
+            yield return new WaitForSeconds(0);
+
+        }
         for (int i = 0; i < cardPlayArea.transform.childCount; i++)
         {
             cardPlayArea.transform.GetChild(i).GetComponent<SpriteRenderer>().sprite = null;

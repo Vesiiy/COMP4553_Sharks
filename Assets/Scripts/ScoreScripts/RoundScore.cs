@@ -134,7 +134,10 @@ public class RoundScore : MonoBehaviour
         Counters.trickSetCheck = true;
 
         gameOverlayScript.UpdateTrickSuit();
-        StartCoroutine(gameOverlayScript.ClearCardPlayArea());
+
+        if (Counters.cardsInPlay != 0) {
+            StartCoroutine(gameOverlayScript.ClearCardPlayArea(false));
+        }
     }
 
     public void ClearCardsPlayed() { cardsPlayed.Clear(); }

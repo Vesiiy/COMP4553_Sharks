@@ -21,7 +21,6 @@ public class RoundUpdate: MonoBehaviour
 
     private void Start()
     {
-        nextRoundButton.SetActive(false);
         ObjectActive(betObjects);
         NextRound();
     }
@@ -31,10 +30,13 @@ public class RoundUpdate: MonoBehaviour
     {
         if (Counters.cardsInPlay == 0)
         {
+            nextRoundButton.SetActive(!nextRoundButton.activeSelf);
+
             Counters.roundNum++;
             Counters.bettingPhase = true;
             NextTrumpSuit();
 
+            StartCoroutine(gameOverlayScript.ClearCardPlayArea(true));
             gameOverlayScript.ClearTricks();
             gameOverlayScript.UpdateRound();
             deckBehaviourScript.DealCards();
