@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      unity-logo-dark_0: -6350455821683613770
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
