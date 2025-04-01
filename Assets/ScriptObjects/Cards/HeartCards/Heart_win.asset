@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1408dfe3b5e8a43b6b8558a1a22c7d, type: 3}
   m_Name: Heart_win
   m_EditorClassIdentifier: 
-  cardSuit: 2
+  cardSuit: 4
   cardWeight: 15
   cardFront: {fileID: -4398717326534089767, guid: b58d3fbc511e69d4da0918873d248051, type: 3}
   cardBack: {fileID: 0}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1408dfe3b5e8a43b6b8558a1a22c7d, type: 3}
   m_Name: Club_lose
   m_EditorClassIdentifier: 
-  cardSuit: 0
+  cardSuit: 4
   cardWeight: 1
   cardFront: {fileID: -5388774874332693820, guid: ed164ccb15c52194489e240c1ef2ce2e, type: 3}
   cardBack: {fileID: 0}

@@ -20,7 +20,6 @@ public class GameOverlay: MonoBehaviour
 
     public GameObject pauseOverlayCanvas;
     public GameObject playerUI;
-    public GameObject resultsObject;
 
     // Private Variables
     public TextMeshProUGUI trickSuitTMP;
