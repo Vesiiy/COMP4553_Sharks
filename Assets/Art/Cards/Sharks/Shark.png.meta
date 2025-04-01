@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ed164ccb15c52194489e240c1ef2ce2e
+guid: 96b4ecf6dea9f0746a78b4eb1db783c3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5388774874332693820
-    second: Jester2_0
+      213: 5746764926269108267
+    second: Shark_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jester2_0
+      name: Shark_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 675
-        height: 1050
+        width: 1350
+        height: 2100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4ca79d08dc93735b0800000000000000
-      internalID: -5388774874332693820
+      spriteID: b20b1f5b04c90cf40800000000000000
+      internalID: 5746764926269108267
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Jester2_0: -5388774874332693820
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
