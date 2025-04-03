@@ -653,11 +653,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1764160867533888000, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 380.99
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 1764160867533888000, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 216.65002
+      value: 270
       objectReference: {fileID: 0}
     - target: {fileID: 1764160867533888000, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
       propertyPath: m_LocalPosition.x
@@ -714,6 +714,22 @@ PrefabInstance:
     - target: {fileID: 5425295492430091890, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
       propertyPath: m_Color.a
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425295492430091890, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
+      propertyPath: m_Color.b
+      value: 0.59607846
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425295492430091890, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
+      propertyPath: m_Color.g
+      value: 0.12941177
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425295492430091890, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
+      propertyPath: m_Color.r
+      value: 0.25490198
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425295492430091890, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
+      propertyPath: m_FillCenter
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5563683221420276172, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
       propertyPath: m_text
@@ -1360,11 +1376,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1764160867533888000, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 386.53003
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 1764160867533888000, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 216.65002
+      value: 270
       objectReference: {fileID: 0}
     - target: {fileID: 1764160867533888000, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1417,6 +1433,22 @@ PrefabInstance:
     - target: {fileID: 2654406283698575333, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
       propertyPath: m_Name
       value: Player1_Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425295492430091890, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
+      propertyPath: m_Color.b
+      value: 0.59607846
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425295492430091890, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
+      propertyPath: m_Color.g
+      value: 0.12941177
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425295492430091890, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
+      propertyPath: m_Color.r
+      value: 0.25490198
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425295492430091890, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
+      propertyPath: m_FillCenter
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3480,7 +3512,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 190, y: 120}
-  m_SizeDelta: {x: 398.31995, y: 156.52002}
+  m_SizeDelta: {x: 300, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1301631192
 MonoBehaviour:
@@ -3495,7 +3527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.97917986, b: 0, a: 1}
+  m_Color: {r: 0.25490198, g: 0.12941177, b: 0.59607846, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3505,7 +3537,7 @@ MonoBehaviour:
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
-  m_FillCenter: 0
+  m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
