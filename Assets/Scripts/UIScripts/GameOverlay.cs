@@ -21,7 +21,6 @@ public class GameOverlay: MonoBehaviour
 
     public GameObject pauseOverlayCanvas;
     public GameObject playerUI;
-    public GameObject resultsObject;
 
     // Private Variables
     public TextMeshProUGUI trickSuitTMP;
@@ -153,6 +152,9 @@ public class GameOverlay: MonoBehaviour
         Sprite cardSprite = (Sprite)cardData.GetType().GetField("cardFront").GetValue(cardData);
 
         spriteRenderer.sprite = cardSprite;
+
+        // Halve the size of the card sprite
+        slot.localScale = new Vector3(0.5f, 0.5f, 1f);
     }
 
     public IEnumerator ClearCardPlayArea(bool nextRound)

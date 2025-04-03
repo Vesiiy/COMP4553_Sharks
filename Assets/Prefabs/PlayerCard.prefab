@@ -274,7 +274,7 @@ MonoBehaviour:
   cardWeight: 0
   spriteFront: {fileID: 213515049281064385}
   spriteBack: {fileID: 5714929341293784745}
-  card: {fileID: 11400000, guid: 62947b0c6955cce459629bb7c40ef976, type: 2}
+  card: {fileID: 11400000, guid: ac6b957b5457e8a458459aad83a62071, type: 2}
   playerId: 2
 --- !u!61 &7723342942698242490
 BoxCollider2D:

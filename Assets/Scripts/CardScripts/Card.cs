@@ -44,6 +44,9 @@ public class Card : MonoBehaviour
         cardObject.GetComponent<Card>().playerHandScript = GameObject.Find("CardManager").GetComponent<PlayerHand>();
         cardObject.GetComponent<Card>().roundScoreScript = GameObject.Find("ScoreManager").GetComponent<RoundScore>();
 
+        // Halve the size of the cardFront sprite
+        cardComponent.spriteFront.transform.localScale = new Vector3(0.5f, 0.5f, 1f);
+
         frontRenderer.sprite = (Sprite)card.GetType().GetField("cardFront").GetValue(card);
 
         // Disable collider on cards that do not belong to the player 
