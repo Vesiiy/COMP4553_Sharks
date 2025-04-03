@@ -786,7 +786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1764160867533888000, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 300
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: 1764160867533888000, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1656,7 +1656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1764160867533888000, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 300
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: 1764160867533888000, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2233,6 +2233,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 414524036}
   m_CullTransparentMesh: 1
+--- !u!114 &416748346 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4692097631280642401, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
+  m_PrefabInstance: {fileID: 363816847}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &439733870
 GameObject:
   m_ObjectHideFlags: 0
@@ -4696,6 +4707,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268355953}
   m_CullTransparentMesh: 1
+--- !u!114 &1272425698 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4692097631280642401, guid: e7a6e99e143894a95ba3e02f31e78d38, type: 3}
+  m_PrefabInstance: {fileID: 189352735}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1301631190
 GameObject:
   m_ObjectHideFlags: 0
@@ -4735,7 +4757,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 190, y: 120}
-  m_SizeDelta: {x: 300, y: 200}
+  m_SizeDelta: {x: 240, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1301631192
 MonoBehaviour:
@@ -5120,11 +5142,11 @@ PrefabInstance:
     - target: {fileID: 3510808996527138499, guid: cb37eab15b0d14741817b9d633f355e6, type: 3}
       propertyPath: 'playerBets.Array.data[1]'
       value: 
-      objectReference: {fileID: 2008474578}
+      objectReference: {fileID: 416748346}
     - target: {fileID: 3510808996527138499, guid: cb37eab15b0d14741817b9d633f355e6, type: 3}
       propertyPath: 'playerBets.Array.data[2]'
       value: 
-      objectReference: {fileID: 1322298682}
+      objectReference: {fileID: 1272425698}
     - target: {fileID: 3510808996527138499, guid: cb37eab15b0d14741817b9d633f355e6, type: 3}
       propertyPath: 'playerPanels.Array.data[0]'
       value: 
